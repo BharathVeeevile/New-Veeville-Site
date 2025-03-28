@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <title>Veeville</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link rel="icon" href="../Images/Home Page Thumbnails/Logoimage.png" type="image/x-icon" />
+
+
+
+
+</head>
+
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="../Images/Work Page Thumbnails/Logo Image.webp" alt="Veeville Logo" class="logo-image" />
+            </a>
+        </div>
+
+        <div class="hamburger">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="work.html">WORK</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+
+            <!-- ADD THIS HERE -->
+            <li>
+                <div class="search-container">
+                    <div class="search-icon" onclick="toggleSearch()">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+
+                    </div>
+                    <div id="search-overlay">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+
+                            <input type="text" placeholder="Ask Bob Anything" class="search-input" />
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <!-- END -->
+        </ul>
+    </nav>
+
+
+    <section class="design-carousel">
+
+
+        <!-- Slides -->
+        <div class="dc-slide active"
+            style="background-image: url('https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/01/LOVEOCEAN_Header2.png');">
+        </div>
+        <div class="dc-slide"
+            style="background-image: url('https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/McDonalds-Case-Study-4.png');">
+        </div>
+        <div class="dc-slide"
+            style="background-image: url('https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/SEEDLIP_01.png');">
+        </div>
+        <div class="dc-slide"
+            style="background-image: url('https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/McDonalds-Case-Study-4.png');">
+        </div>
+        <!-- Text -->
+        <div class="dc-text">
+            Design<br><span>for life.</span>
+        </div>
+
+        <!-- Dots -->
+        <div class="dc-dots">
+            <div class="dc-dot active" data-index="0"></div>
+            <div class="dc-dot" data-index="1"></div>
+            <div class="dc-dot" data-index="2"></div>
+            <div class="dc-dot" data-index="3"></div>
+        </div>
+    </section>
+
+
+    <section class="brand-section">
+        <div class="container">
+            <div class="columns">
+                <div class="left-column">
+                    <h1 class="title">Growing brands for creative, commercial and cultural impact.</h1>
+                </div>
+                <div class="right-column">
+                    <p class="description">Pearlfisher is an independent brand design agency focused on creating growth
+                        through the power of design.</p>
+                    <p class="description">From visual identity to digital expression, we design complete brand
+                        experiences that create desire at every touch point.</p>
+                    <a href="#" class="read-more">
+                        Read more about us
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hover-image-section">
+        <div class="hover-container">
+            <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/02/02_KOTEXTHEPACK_CaseStudy_Pearlfisher.png"
+                alt="Design for Life" class="hover-image" />
+            <div class="hover-text">
+                <h2>Design for Life</h2>
+                <p>Celebrating creativity, diversity, and empowerment through bold expression and vibrant character.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="hover-image-section">
+        <div class="hover-container">
+            <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/10/1.Sipsmith_header.png"
+                alt="Design for Life" class="hover-image" />
+            <div class="hover-text">
+                <h2>Design for Life</h2>
+                <p>Celebrating creativity, diversity, and empowerment through bold expression and vibrant character.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="hover-image-section">
+        <div class="hover-container">
+            <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/01.-BYOMA_Packs.png"
+                alt="Design for Life" class="hover-image" />
+            <div class="hover-text">
+                <h2>Design for Life</h2>
+                <p>Celebrating creativity, diversity, and empowerment through bold expression and vibrant character.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="hover-image-section">
+        <div class="hover-container">
+            <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/1.-Humm_mmm-1.png"
+                alt="Design for Life" class="hover-image" />
+            <div class="hover-text">
+                <h2>Design for Life</h2>
+                <p>Celebrating creativity, diversity, and empowerment through bold expression and vibrant character.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="hover-image-section">
+        <div class="hover-container">
+            <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/1.OG_LOGO.png"
+                alt="Design for Life" class="hover-image" />
+            <div class="hover-text">
+                <h2>Design for Life</h2>
+                <p>Celebrating creativity, diversity, and empowerment through bold expression and vibrant character.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="hover-image-section">
+        <div class="hover-container">
+            <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/Logo.png" alt="Design for Life"
+                class="hover-image" />
+            <div class="hover-text">
+                <h2>Design for Life</h2>
+                <p>Celebrating creativity, diversity, and empowerment through bold expression and vibrant character.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="see-more">
+        <a href="#">See more work</a>
+    </div>
+
+
+    <section class="news-carousel">
+        <h2 class="section-title">NEWS</h2>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- Original Slides -->
+                <div class="carousel-slide active">
+                    <div class="news-card">
+                        <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/05/Screenshot-2024-05-28-at-16.08.34.png"
+                            alt="News 1" class="card-image">
+                        <h3 class="card-title">Pearlfisher Designs: Recipes from Home</h3>
+                        <p class="card-description">Creating meaningful brand experiences through strategic design.</p>
+                    </div>
+                    <div class="news-card">
+                        <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/05/PIC.jpg"
+                            alt="News 2" class="card-image">
+                        <h3 class="card-title">B Corp Certification Journey</h3>
+                        <p class="card-description">Our commitment to sustainable business practices.</p>
+                    </div>
+                    <div class="news-card">
+                        <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/05/IMG_0673-scaled.jpg"
+                            alt="News 3" class="card-image">
+                        <h3 class="card-title">Global CEO Appointment</h3>
+                        <p class="card-description">New leadership for global brand strategy.</p>
+                    </div>
+                </div>
+
+                <!-- Cloned Slides for Infinite Effect -->
+                <div class="carousel-slide">
+                    <div class="news-card">
+                        <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/Article.jpg"
+                            alt="News 4" class="card-image">
+                        <h3 class="card-title">Luxury Brand Innovations</h3>
+                        <p class="card-description">Redefining luxury experiences in modern markets.</p>
+                    </div>
+                    <div class="news-card">
+                        <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/05/ThumbnailFFT.png"
+                            alt="News 5" class="card-image">
+                        <h3 class="card-title">Digital Expression Workshop</h3>
+                        <p class="card-description">Next-gen digital brand experiences.</p>
+                    </div>
+                    <div class="news-card">
+                        <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/04/CT_LANDSCAPE.jpg"
+                            alt="News 6" class="card-image">
+                        <h3 class="card-title">Cultural Impact Study</h3>
+                        <p class="card-description">Understanding brand resonance across cultures.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <!-- <div class="carousel-controls">
+            <button class="prev-btn">‹</button>
+            <div class="dots-container"></div>
+            <button class="next-btn">›</button>
+        </div> -->
+    </section>
+
+
+    <section class="footer-section">
+        <div class="columns-row">
+            <div class="column">
+                <h3>Contact</h3>
+                <p>Let's chat.</p>
+            </div>
+
+            <div class="column">
+                <h3>Newsletter</h3>
+                <p>Subscribe.</p>
+            </div>
+
+            <div class="column">
+                <h3>Join us</h3>
+                <p>Careers.</p>
+            </div>
+
+            <div class="spacer-column"></div>
+        </div>
+
+        <div class="info-row">
+            <div class="locations">
+                <span>London.</span>
+                <span>New York.</span>
+            </div>
+
+           
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                © Pearfisher 1992 - 2024
+                <a href="#">Privacy Policy</a>
+                <a href="#">Sitemap</a>
+            </p>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        
+    </section>
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            highlightActivePage();
+            setupHamburgerMenu();
+        });
+
+        function highlightActivePage() {
+            const currentPath = window.location.pathname.split("/").pop();
+            const menuItems = document.querySelectorAll('.nav-links li a');
+
+            menuItems.forEach(item => {
+                if (item.getAttribute('href') === currentPath) {
+                    item.classList.add("active");
+                }
+            });
+        }
+
+        function setupHamburgerMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const hamburgerIcon = document.querySelector('.hamburger i');
+
+            hamburger.addEventListener("click", () => {
+                toggleMenu(navLinks, hamburgerIcon, hamburger);
+            });
+        }
+
+        function toggleMenu(navLinks, hamburgerIcon, hamburger) {
+            navLinks.classList.toggle("active");
+
+            if (navLinks.classList.contains("active")) {
+                hamburgerIcon.classList.remove("fa-bars");
+                hamburgerIcon.classList.add("fa-xmark");
+                hamburger.classList.add("close-style");  // add custom style
+            } else {
+                hamburgerIcon.classList.remove("fa-xmark");
+                hamburgerIcon.classList.add("fa-bars");
+                hamburger.classList.remove("close-style");  // remove custom style
+            }
+        }
+
+    </script>
+
+
+    <!-- search bar -->
+
+
+
+    <script>
+        function toggleSearch() {
+            const overlay = document.getElementById("search-overlay");
+            const inputField = overlay.querySelector("input");
+
+            inputField.value = ''; // reset input every time
+            overlay.style.display = "flex";
+            inputField.focus();
+
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) {
+                    overlay.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+
+    <!-- Carousel -->
+
+    <script>
+        function initCarousel(selector) {
+            const section = document.querySelector(selector);
+            if (!section) return;
+
+            const slides = section.querySelectorAll('.dc-slide');
+            const dots = section.querySelectorAll('.dc-dot');
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                    dots[i].classList.toggle('active', i === index);
+                });
+                currentIndex = index;
+            }
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const index = parseInt(dot.getAttribute('data-index'));
+                    showSlide(index);
+                });
+            });
+
+            setInterval(() => {
+                const nextIndex = (currentIndex + 1) % slides.length;
+                showSlide(nextIndex);
+            }, 5000);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            initCarousel('.design-carousel');
+        });
+
+
+    </script>
+
+    <script>
+        // script.js
+
+
+        function setupSmoothScroll() {
+            const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+            function smoothScrollHandler(e) {
+                e.preventDefault();
+                const targetSelector = this.getAttribute('href');
+                const targetElement = document.querySelector(targetSelector);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+
+            anchorLinks.forEach(anchor => {
+                anchor.addEventListener('click', smoothScrollHandler);
+            });
+        }
+
+        function initializeModule() {
+            try {
+                setupSmoothScroll();
+                console.log('Module initialized successfully');
+            } catch (error) {
+                console.error('Module initialization failed:', error);
+            }
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            initializeModule();
+        } else {
+            document.addEventListener('DOMContentLoaded', initializeModule);
+        }
+    </script>
+
+
+    <!-- News Carousel -->
+
+    <script>
+        function initializeInfiniteCarousel() {
+            const track = document.querySelector('.carousel-track');
+            const slides = document.querySelectorAll('.carousel-slide');
+            let currentIndex = 0;
+            let isTransitioning = false;
+
+            // Clone first slide for infinite effect
+            const cloneSlide = slides[0].cloneNode(true);
+            track.appendChild(cloneSlide);
+
+            function moveToNextSlide() {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentIndex++;
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            function handleTransitionEnd() {
+                // Reset to first slide when reaching clone
+                if (currentIndex >= slides.length) {
+                    track.style.transition = 'none';
+                    currentIndex = 0;
+                    track.style.transform = 'translateX(0)';
+                    setTimeout(() => {
+                        track.style.transition = 'transform 0.5s ease-in-out';
+                    }, 10);
+                }
+                isTransitioning = false;
+            }
+
+            function startAutoPlay() {
+                setInterval(moveToNextSlide, 3000);
+            }
+
+            // Event listeners
+            track.addEventListener('transitionend', handleTransitionEnd);
+            startAutoPlay();
+        }
+
+        // Initialize when document is ready
+        document.addEventListener('DOMContentLoaded', initializeInfiniteCarousel);
+    </script>
+
+
+</body>
+
+</html>

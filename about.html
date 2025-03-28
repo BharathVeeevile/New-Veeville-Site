@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <title>Veeville</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link rel="icon" href="../Images/Home Page Thumbnails/Logoimage.png" type="image/x-icon" />
+    <link rel="stylesheet" href="about.css">
+
+
+
+
+</head>
+
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="../Images/Work Page Thumbnails/Logo Image.webp" alt="Veeville Logo" class="logo-image" />
+            </a>
+        </div>
+
+        <div class="hamburger">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="work.html">WORK</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+
+            <!-- ADD THIS HERE -->
+            <li>
+                <div class="search-container">
+                    <div class="search-icon" onclick="toggleSearch()">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+
+                    </div>
+                    <div id="search-overlay">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+
+                            <input type="text" placeholder="Ask Bob Anything" class="search-input" />
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <!-- END -->
+        </ul>
+    </nav>
+
+
+    <section class="design-carousel">
+
+
+        <!-- Slides -->
+        <div class="dc-slide active"
+            style="background-image: url('https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/London_Contact-01.png');">
+        </div>
+        <div class="dc-slide"
+            style="background-image: url('https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/12/Seedlip2.png');">
+        </div>
+        <div class="dc-slide"
+            style="background-image: url('https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/12/Garden2.png');">
+        </div>
+        <div class="dc-slide"
+            style="background-image: url('https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/McDonalds-Case-Study-4.png');">
+        </div>
+        <!-- Text -->
+        <div class="dc-text">
+            Design<br><span>for life.</span>
+        </div>
+
+        <!-- Dots -->
+        <div class="dc-dots">
+            <div class="dc-dot active" data-index="0"></div>
+            <div class="dc-dot" data-index="1"></div>
+            <div class="dc-dot" data-index="2"></div>
+            <div class="dc-dot" data-index="3"></div>
+        </div>
+    </section>
+
+
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-left">
+                <h2>
+                    At Pearlfisher we Design For Life<br>
+                    because we believe in a better<br>
+                    future by design.
+                </h2>
+            </div>
+            <div class="about-right">
+                <p>
+                    We are a visionary group of Futurists, Strategists, Designers and Realisers.
+                    By understanding how people’s lives are changing, we create simpler lighter
+                    and more desirable ideas for the future.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="expertise-section">
+        <div class="left-column">
+            <h1 class="section-title">Expertise</h1>
+        </div>
+
+        <div class="right-column">
+            <!-- Futures Accordion -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3 class="accordion-title">Futures</h3>
+                    <span class="accordion-icon">↓</span>
+                </div>
+                <div class="accordion-content">
+                    <p class="accordion-description">Futures anticipates and interprets change</p>
+                    <ul class="accordion-list">
+                        <li>Cultural Perspectives</li>
+                        <li>Category Analysis</li>
+                        <li>Consumer Profiling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Strategy Accordion -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3 class="accordion-title">Strategy</h3>
+                    <span class="accordion-icon">↓</span>
+                </div>
+                <div class="accordion-content">
+                    <p class="accordion-description">Expresses sharp thinking to unlock desire</p>
+                    <ul class="accordion-list">
+                        <li>Brand Strategy</li>
+                        <li>Portfolio Strategy</li>
+                        <li>Design Strategy</li>
+                        <li>Communication Strategy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Design Accordion -->
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3 class="accordion-title">Design</h3>
+                    <span class="accordion-icon">↓</span>
+                </div>
+                <div class="accordion-content">
+                    <p class="accordion-description">Creates desire through multi-sensorial experiences</p>
+                    <ul class="accordion-list">
+                        <li>Visual Identity</li>
+                        <li>Packaging Design</li>
+                        <li>Digital Design</li>
+                        <li>Structural Design</li>
+                        <li>CGI & Motion</li>
+                        <li>Sustainable Design</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="rules-section">
+        <div class="rules-container">
+            <div class="rules-left">
+                <h2>Three things we don’t do.</h2>
+            </div>
+            <div class="rules-right">
+                <div class="rules-block">
+                    <h3>Unethical work</h3>
+                    <p>
+                        We won't work with anyone that isn't truthful about their brand, is wilfully harming life,
+                        enforcing hardship or damaging the environment.
+                    </p>
+                </div>
+                <div class="rules-block">
+                    <h3>Unpaid work</h3>
+                    <p>
+                        We don't offer free creative pitches – or free exclusivity. It's simply not good business for
+                        anyone.
+                    </p>
+                </div>
+                <div class="rules-block">
+                    <h3>Unjustness</h3>
+                    <p>
+                        We foster a welcoming, diverse and inclusive workplace culture with no room for discrimination
+                        and where everyone is treated with respect and dignity.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="people-section">
+        <h2 class="section-title">People</h2>
+        <div class="people-grid">
+
+            <!-- Row 1 -->
+            <div class="person">
+                <img src="https://veeville.com/wp-content/uploads/2023/08/Arun-Kumar.jpg" alt="Luke Hayman">
+                <div class="person-info">
+                    <h3>Arun Kumar</h3>
+                    <p>Bengaluru</p>
+                </div>
+            </div>
+            <div class="person">
+                <img src="https://veeville.com/wp-content/uploads/2023/08/Brijesh.jpg" alt="Michael Gericke">
+                <div class="person-info">
+                    <h3>Brijesh</h3>
+                    <p>Bengaluru</p>
+                </div>
+            </div>
+            <div class="person">
+                <img src="https://veeville.com/wp-content/uploads/2023/07/Dilip-Kumar.jpg" alt="Michael Bierut">
+                <div class="person-info">
+                    <h3>Dilip Kumar</h3>
+                    <p>Bengaluru</p>
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="person">
+                <img src="https://veeville.com/wp-content/uploads/2023/08/Ishita-Sharma.jpg" alt="Michael Bierut">
+                <div class="person-info">
+                    <h3>Ishita Sharma</h3>
+                    <p>Bengaluru</p>
+                </div>
+            </div>
+            <div class="person">
+                <img src="https://veeville.com/wp-content/uploads/2023/07/Karthik-Ramesh.jpg" alt="Michael Bierut">
+                <div class="person-info">
+                    <h3>Karthik Ramesh</h3>
+                    <p>Bengaluru</p>
+                </div>
+            </div>
+            <div class="person">
+                <img src="https://veeville.com/wp-content/uploads/2023/07/Leo-Nathan.jpg" alt="Michael Bierut">
+                <div class="person-info">
+                    <h3>Leo Nathan</h3>
+                    <p>Bengaluru</p>
+                </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="person">
+                <img src="../Images/About Images/Mahesh.webp" alt="Mahesh">
+                <div class="person-info">
+                    <h3>Mahesh Vorkady</h3>
+                    <p>Bengaluru</p>
+                </div>
+            </div>
+            <div class="person">
+                <img src="https://veeville.com/wp-content/uploads/2023/07/Methun-James.jpg" alt="Michael Gericke">
+                <div class="person-info">
+                    <h3>Methun James</h3>
+                    <p>Bengaluru</p>
+                </div>
+            </div>
+            <div class="person">
+                <img src="https://veeville.com/wp-content/uploads/2023/07/Rajesh-Vorkady.jpg" alt="Rajesh Vorkady">
+                <div class="person-info">
+                    <h3>Rajesh Vorkady</h3>
+                    <p>Bengaluru</p>
+                </div>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="person">
+                <img src="https://veeville.com/wp-content/uploads/2023/07/Srividhya-A-R.jpg" alt="Srividhya">
+                <div class="person-info">
+                    <h3>Srividhya A R</h3>
+                    <p>Bengaluru</p>
+                </div>
+            </div>
+            <div class="person">
+                <img src="https://veeville.com/wp-content/uploads/2023/07/Vallab-Narayan.jpg" alt="Vallab">
+                <div class="person-info">
+                    <h3>Vallab Narayan</h3>
+                    <p>Bengaluru</p>
+                </div>
+            </div>
+            <div class="person">
+                <img src="../Images/About Images/Bharath Ramakanth.webp" alt="Mahesh">
+                <div class="person-info">
+                    <h3>Bharat Ramanath</h3>
+                    <p>Bengaluru</p>
+                </div>
+            </div>
+
+            <!-- Row 5 -->
+            <div class="person">
+                <img src="../Images/About Images/Bharath Ramakanth.webp" alt="Mahesh">
+                <div class="person-info">
+                    <h3>Bharat Ramanath</h3>
+                    <p>Bengaluru</p>
+                </div>
+            </div>
+            <div class="person">
+                <img src="https://veeville.com/wp-content/uploads/2023/07/Vallab-Narayan.jpg" alt="Vallab">
+                <div class="person-info">
+                    <h3>Vallab Narayan</h3>
+                    <p>Bengaluru</p>
+                </div>
+            </div>
+            <div class="person">
+                <img src="https://veeville.com/wp-content/uploads/2023/07/Rajesh-Vorkady.jpg" alt="Rajesh Vorkady">
+                <div class="person-info">
+                    <h3>Rajesh Vorkady</h3>
+                    <p>Bengaluru</p>
+                </div>
+
+            </div>
+    </section>
+
+
+
+    <section class="footer-section">
+        <div class="columns-row">
+            <div class="column">
+                <h3>Contact</h3>
+                <p>Let's chat.</p>
+            </div>
+
+            <div class="column">
+                <h3>Newsletter</h3>
+                <p>Subscribe.</p>
+            </div>
+
+            <div class="column">
+                <h3>Join us</h3>
+                <p>Careers.</p>
+            </div>
+
+            <div class="spacer-column"></div>
+        </div>
+
+        <div class="info-row">
+            <div class="locations">
+                <span>London.</span>
+                <span>New York.</span>
+            </div>
+
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                © Pearfisher 1992 - 2024
+                <a href="#">Privacy Policy</a>
+                <a href="#">Sitemap</a>
+            </p>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            highlightActivePage();
+            setupHamburgerMenu();
+        });
+
+        function highlightActivePage() {
+            const currentPath = window.location.pathname.split("/").pop();
+            const menuItems = document.querySelectorAll('.nav-links li a');
+
+            menuItems.forEach(item => {
+                if (item.getAttribute('href') === currentPath) {
+                    item.classList.add("active");
+                }
+            });
+        }
+
+        function setupHamburgerMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const hamburgerIcon = document.querySelector('.hamburger i');
+
+            hamburger.addEventListener("click", () => {
+                toggleMenu(navLinks, hamburgerIcon, hamburger);
+            });
+        }
+
+        function toggleMenu(navLinks, hamburgerIcon, hamburger) {
+            navLinks.classList.toggle("active");
+
+            if (navLinks.classList.contains("active")) {
+                hamburgerIcon.classList.remove("fa-bars");
+                hamburgerIcon.classList.add("fa-xmark");
+                hamburger.classList.add("close-style");  // add custom style
+            } else {
+                hamburgerIcon.classList.remove("fa-xmark");
+                hamburgerIcon.classList.add("fa-bars");
+                hamburger.classList.remove("close-style");  // remove custom style
+            }
+        }
+
+    </script>
+
+
+    <!-- search bar -->
+
+
+
+    <script>
+        function toggleSearch() {
+            const overlay = document.getElementById("search-overlay");
+            const inputField = overlay.querySelector("input");
+
+            inputField.value = ''; // reset input every time
+            overlay.style.display = "flex";
+            inputField.focus();
+
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) {
+                    overlay.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+
+    <!-- Carousel -->
+
+    <script>
+        function initCarousel(selector) {
+            const section = document.querySelector(selector);
+            if (!section) return;
+
+            const slides = section.querySelectorAll('.dc-slide');
+            const dots = section.querySelectorAll('.dc-dot');
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                    dots[i].classList.toggle('active', i === index);
+                });
+                currentIndex = index;
+            }
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const index = parseInt(dot.getAttribute('data-index'));
+                    showSlide(index);
+                });
+            });
+
+            setInterval(() => {
+                const nextIndex = (currentIndex + 1) % slides.length;
+                showSlide(nextIndex);
+            }, 5000);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            initCarousel('.design-carousel');
+        });
+
+
+    </script>
+
+    <!-- accordion -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+
+                header.addEventListener('click', () => {
+                    const openItem = document.querySelector('.accordion-item.active');
+
+                    toggleItem(item);
+
+                    if (openItem && openItem !== item) {
+                        toggleItem(openItem);
+                    }
+                });
+            });
+
+            const toggleItem = (item) => {
+                const content = item.querySelector('.accordion-content');
+
+                if (item.classList.contains('active')) {
+                    content.style.maxHeight = null;
+                    item.classList.remove('active');
+                } else {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    item.classList.add('active');
+                }
+            };
+        });
+
+    </script>
+
+
+
+</body>
+
+</html>
