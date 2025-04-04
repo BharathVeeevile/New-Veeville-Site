@@ -41,8 +41,9 @@ nav {
 }
 
 .logo {
-    width: 200px;
+    width: 100px;
     height: auto;
+    margin-bottom: 10px;
 }
 
 .search {
@@ -112,7 +113,7 @@ nav.scrolled  .nav-links a {
   .video-section {
     width: 100%;
     overflow: hidden;
-    margin-bottom: 30px; /* Adjust spacing between videos here */
+  
   }
   
   .video-container {
