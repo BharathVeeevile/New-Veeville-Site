@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Full Width Videos with Navbar</title>
     <link rel="stylesheet" href="separate.css">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,14 +18,24 @@
     <nav id="navbar">
         <div class="nav-links">
             <img class="logo" src="../Images/Work Page Thumbnails/Logo Image.webp" alt="Logo">
-         
+
             <a href="#belief">ABOUT</a>
             <a href="#work">WORK</a>
             <a href="#work">CLIENTS</a>
         </div>
-     
+
         <div class="search">SEARCH</div>
     </nav>
+
+    <div class="dot-sidebar">
+        <div class="dot" data-target="0"></div>
+        <div class="dot" data-target="1"></div>
+        <div class="dot" data-target="2"></div>
+        <div class="dot" data-target="3"></div>
+        <div class="dot" data-target="4"></div>
+    </div>
+
+
 
 
     <!-- Video Sections -->
@@ -238,6 +248,48 @@
         document.addEventListener('DOMContentLoaded', initModal);
 
     </script>
+
+
+    <script>
+        function initStickyDotSidebar() {
+            const dots = document.querySelectorAll(".dot-sidebar .dot");
+            const sections = document.querySelectorAll(".video-section");
+
+            // Scroll to section when dot is clicked
+            dots.forEach(dot => {
+                dot.addEventListener("click", () => {
+                    const index = parseInt(dot.getAttribute("data-target"));
+                    if (sections[index]) {
+                        sections[index].scrollIntoView({ behavior: "smooth" });
+                    }
+                });
+            });
+
+            // Observe which section is in view and highlight corresponding dot
+            const observer = new IntersectionObserver(
+                entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const index = Array.from(sections).indexOf(entry.target);
+                            dots.forEach(dot => dot.classList.remove("active"));
+                            if (dots[index]) {
+                                dots[index].classList.add("active");
+                            }
+                        }
+                    });
+                },
+                { threshold: 0.6 }
+            );
+
+            sections.forEach(section => observer.observe(section));
+        }
+
+        document.addEventListener("DOMContentLoaded", initStickyDotSidebar);
+    </script>
+
+
+
+
 </body>
 
 </html>
