@@ -57,7 +57,7 @@ body {
     display: none;
     cursor: pointer;
     font-size: 24px;
-    color: #ffffff;
+    color: #000000;
 }
 
 .navbar.sticky {
@@ -80,15 +80,16 @@ body {
         display: block;
     }
 
-    .hamburger.close-style {
-        background-color: rgba(255, 255, 255, 0.2);
-        padding: 2px 15px;
-        border-radius: 25px;
-    }
-
+     
     .hamburger.close-style i {
-        color: #ffffff;
-        font-size: 20px;
+      color: #ffffff;
+      font-size: 20px;
+              padding: 10px 12px;
+ 
+ 
+ 
+      background: #000;
+      border-radius: 25px;
     }
 
     .nav-links {
@@ -109,10 +110,16 @@ body {
         display: flex;
     }
 
-    .nav-links li {
+      .nav-links li {
         margin-bottom: 0;
     }
-}
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+  }}
 
 /* search bar */
 /* Search container inside nav */
