@@ -1053,65 +1053,37 @@
 
 
 
-
-    <section class="news-carousel">
-        <h2 class="section-title">NEWS</h2>
-        <div class="carousel-container">
-            <div class="carousel-track">
-                <!-- Original Slides -->
-                <div class="carousel-slide active">
-                    <div class="news-card">
-                        <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/05/Screenshot-2024-05-28-at-16.08.34.png"
-                            alt="News 1" class="card-image">
-                        <h3 class="card-title">Pearlfisher Designs: Recipes from Home</h3>
-                        <p class="card-description">Creating meaningful brand experiences through strategic design.</p>
-                    </div>
-                    <div class="news-card">
-                        <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/05/PIC.jpg"
-                            alt="News 2" class="card-image">
-                        <h3 class="card-title">B Corp Certification Journey</h3>
-                        <p class="card-description">Our commitment to sustainable business practices.</p>
-                    </div>
-                    <div class="news-card">
-                        <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/05/IMG_0673-scaled.jpg"
-                            alt="News 3" class="card-image">
-                        <h3 class="card-title">Global CEO Appointment</h3>
-                        <p class="card-description">New leadership for global brand strategy.</p>
-                    </div>
+    <section class="project-cards-carousel">
+        <h2 class="section-title">Related Projects</h2>
+        <div class="carousel-wrapper">
+            <div class="carousel-track" id="carousel-track">
+                <div class="carousel-card">
+                    <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/05/Screenshot-2024-05-28-at-16.08.34.png"
+                        alt="Project 1" />
+                    <h3>Kahlua</h3>
+                    <p>Fusing personality and authenticity</p>
                 </div>
-
-                <!-- Cloned Slides for Infinite Effect -->
-                <div class="carousel-slide">
-                    <div class="news-card">
-                        <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/Article.jpg"
-                            alt="News 4" class="card-image">
-                        <h3 class="card-title">Luxury Brand Innovations</h3>
-                        <p class="card-description">Redefining luxury experiences in modern markets.</p>
-                    </div>
-                    <div class="news-card">
-                        <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/05/ThumbnailFFT.png"
-                            alt="News 5" class="card-image">
-                        <h3 class="card-title">Digital Expression Workshop</h3>
-                        <p class="card-description">Next-gen digital brand experiences.</p>
-                    </div>
-                    <div class="news-card">
-                        <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/04/CT_LANDSCAPE.jpg"
-                            alt="News 6" class="card-image">
-                        <h3 class="card-title">Cultural Impact Study</h3>
-                        <p class="card-description">Understanding brand resonance across cultures.</p>
-                    </div>
+                <div class="carousel-card">
+                    <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/05/PIC.jpg"
+                        alt="Project 2" />
+                    <h3>SodaStream</h3>
+                    <p>Reasserting leadership and expertise</p>
+                </div>
+                <div class="carousel-card">
+                    <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/05/IMG_0673-scaled.jpg"
+                        alt="Project 3" />
+                    <h3>Sipsmith</h3>
+                    <p>Treasuring story and symbolism</p>
+                </div>
+                <div class="carousel-card">
+                    <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/Article.jpg"
+                        alt="Project 4" />
+                    <h3>Lucozade</h3>
+                    <p>Revitalizing energy with design</p>
                 </div>
             </div>
         </div>
-
-        <!-- Carousel Controls -->
-        <!-- <div class="carousel-controls">
-            <button class="prev-btn">‹</button>
-            <div class="dots-container"></div>
-            <button class="next-btn">›</button>
-        </div> -->
     </section>
-
 
     <section class="footer-section">
         <div class="columns-row">
@@ -1241,48 +1213,57 @@
 
     <!-- News Carousel -->
 
+    <!-- News Carousel -->
+
     <script>
-        function initializeInfiniteCarousel() {
-            const track = document.querySelector('.carousel-track');
-            const slides = document.querySelectorAll('.carousel-slide');
-            let currentIndex = 0;
-            let isTransitioning = false;
 
-            // Clone first slide for infinite effect
-            const cloneSlide = slides[0].cloneNode(true);
-            track.appendChild(cloneSlide);
+        function initializeCardCarousel({
+            trackSelector = '#carousel-track',
+            scrollInterval = 3000,
+            scrollStep = 1
+        } = {}) {
+            const track = document.querySelector(trackSelector);
+            if (!track) return console.warn('Carousel track not found.');
 
-            function moveToNextSlide() {
-                if (isTransitioning) return;
-                isTransitioning = true;
-                currentIndex++;
-                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            let cards = Array.from(track.children);
+            const originalCardCount = cards.length;
+
+            // Clone cards to avoid white space during infinite scroll
+            cards.forEach(card => {
+                const clone = card.cloneNode(true);
+                clone.classList.add('clone');
+                track.appendChild(clone);
+            });
+
+            let index = 0;
+
+            function getCardWidth() {
+                const style = window.getComputedStyle(cards[0]);
+                const marginRight = parseFloat(style.marginRight) || 0;
+                return cards[0].offsetWidth + marginRight;
             }
 
-            function handleTransitionEnd() {
-                // Reset to first slide when reaching clone
-                if (currentIndex >= slides.length) {
-                    track.style.transition = 'none';
-                    currentIndex = 0;
-                    track.style.transform = 'translateX(0)';
+            function scrollNext() {
+                const cardWidth = getCardWidth();
+                index++;
+                track.style.transition = 'transform 0.5s ease';
+                track.style.transform = `translateX(-${index * cardWidth}px)`;
+
+                if (index >= originalCardCount) {
                     setTimeout(() => {
-                        track.style.transition = 'transform 0.5s ease-in-out';
-                    }, 10);
+                        track.style.transition = 'none';
+                        index = 0;
+                        track.style.transform = `translateX(0px)`;
+                    }, 500);
                 }
-                isTransitioning = false;
             }
 
-            function startAutoPlay() {
-                setInterval(moveToNextSlide, 3000);
-            }
-
-            // Event listeners
-            track.addEventListener('transitionend', handleTransitionEnd);
-            startAutoPlay();
+            setInterval(scrollNext, scrollInterval);
         }
 
-        // Initialize when document is ready
-        document.addEventListener('DOMContentLoaded', initializeInfiniteCarousel);
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeCardCarousel();
+        });
     </script>
 
     <!-- Tabs section -->
