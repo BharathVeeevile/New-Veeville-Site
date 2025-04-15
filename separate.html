@@ -17,12 +17,31 @@
       <a href="#section-0">
         <img class="logo" src="../Images/Work Page Thumbnails/Logo Image.webp" alt="Logo" />
       </a>
-      <a href="#section-0">ABOUT</a>
-      <a href="#section-1">WORK</a>
-      <a href="#section-2">CLIENTS</a>
+      <div class="menu-toggle">MENU</div>
+      <div class="fullscreen-nav">
+        <div class="nav-header">
+          <div class="close-btn">CLOSE</div>
+          <div class="search-btn">SEARCH</div>
+        </div>
+        <a href="#section-0">ABOUT</a>
+        <a href="#section-1">WORK</a>
+        <a href="#section-2">BELIEF</a>
+        <a href="#section-3">PUBLISHING</a>
+
+      </div>
+      <!-- Desktop visible links -->
+      <div class="desktop-links">
+        <a href="#section-0">ABOUT</a>
+        <a href="#section-1">WORK</a>
+        <a href="#section-2">CLIENTS</a>
+        <a href="#section-3">PUBLISHING</a>
+
+      </div>
     </div>
     <div class="search">SEARCH</div>
   </nav>
+
+
 
   <!-- DOT SIDEBAR -->
   <div class="dot-sidebar">
@@ -131,7 +150,7 @@
   </div>
 
   <!-- JS CODE -->
-  <script src="script.js"></script>
+
   <script>
     // Modal functionality
     document.querySelector('#openModal').onclick = function () {
@@ -203,7 +222,7 @@
       // Release scrolling lock after animation completes
       scrollTimeout = setTimeout(() => {
         scrolling = false;
-      }, 1000);
+      }, 100);
     }
 
     // Set up intersection observer to detect which section is in view
@@ -332,6 +351,126 @@
     // Initialize the page
     initializeActiveStates();
   </script>
+
+
+
+
+  <script>
+    // Replace your existing navigation highlighting code with this
+    document.addEventListener("DOMContentLoaded", () => {
+      // Get all sections and navigation links
+      const sections = document.querySelectorAll("section")
+      const desktopNavLinks = document.querySelectorAll(".desktop-links a")
+      const mobileNavLinks = document.querySelectorAll(".fullscreen-nav a")
+
+      // Mobile menu functionality
+      const menuToggle = document.querySelector(".menu-toggle")
+      const fullscreenNav = document.querySelector(".fullscreen-nav")
+      const closeBtn = document.querySelector(".close-btn")
+      const searchDesktop = document.querySelector(".search")
+
+      if (menuToggle && fullscreenNav && closeBtn && searchDesktop) {
+        menuToggle.addEventListener("click", () => {
+          fullscreenNav.classList.add("active")
+          fullscreenNav.style.display = "flex"
+          menuToggle.style.visibility = "hidden"
+          searchDesktop.style.visibility = "hidden"
+        })
+
+        closeBtn.addEventListener("click", () => {
+          fullscreenNav.classList.remove("active")
+          fullscreenNav.style.display = "none"
+          menuToggle.style.visibility = "visible"
+          searchDesktop.style.visibility = "visible"
+        })
+      }
+
+      // Function to set active navigation link
+      function setActiveNav(sectionId) {
+        // Remove active class from all links
+        desktopNavLinks.forEach((link) => link.classList.remove("active"))
+        mobileNavLinks.forEach((link) => link.classList.remove("active"))
+
+        // Add active class to links that match the current section
+        const currentSectionLinks = document.querySelectorAll(`a[href="#${sectionId}"]`)
+        currentSectionLinks.forEach((link) => link.classList.add("active"))
+      }
+
+      // Create Intersection Observer to detect active section
+      const observerOptions = {
+        root: null, // Use viewport as root
+        rootMargin: "-40% 0px -40% 0px", // Adjust this to control when the section is considered "active"
+        threshold: 0.1, // Trigger when at least 10% of the target is visible
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          // When section enters viewport
+          if (entry.isIntersecting) {
+            const sectionId = entry.target.getAttribute("id")
+            setActiveNav(sectionId)
+          }
+        })
+      }, observerOptions)
+
+      // Observe all sections
+      sections.forEach((section) => {
+        observer.observe(section)
+      })
+
+      // Set initial active section based on current position
+      function setInitialActive() {
+        // Get current scroll position
+        const scrollPosition = window.scrollY + window.innerHeight / 3
+
+        // Find the section that's currently in view
+        for (let i = 0; i < sections.length; i++) {
+          const section = sections[i]
+          const sectionTop = section.offsetTop
+          const sectionHeight = section.offsetHeight
+
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            setActiveNav(section.getAttribute("id"))
+            break
+          }
+        }
+      }
+
+      // Set initial active section on page load
+      setInitialActive()
+
+      // Handle navigation link clicks
+      function handleNavClick(e) {
+        e.preventDefault()
+        const targetId = this.getAttribute("href").substring(1)
+        const targetSection = document.getElementById(targetId)
+
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: "smooth" })
+          setActiveNav(targetId)
+
+          // Close mobile menu if open
+          if (fullscreenNav && fullscreenNav.classList.contains("active")) {
+            fullscreenNav.classList.remove("active")
+            fullscreenNav.style.display = "none"
+            if (menuToggle) menuToggle.style.visibility = "visible"
+            if (searchDesktop) searchDesktop.style.visibility = "visible"
+          }
+        }
+      }
+
+      // Add click event listeners to navigation links
+      desktopNavLinks.forEach((link) => {
+        link.addEventListener("click", handleNavClick)
+      })
+
+      mobileNavLinks.forEach((link) => {
+        link.addEventListener("click", handleNavClick)
+      })
+    })
+
+  </script>
+
 </body>
 
 </html>
