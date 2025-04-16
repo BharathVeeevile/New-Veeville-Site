@@ -625,6 +625,14 @@ body {
   color: #ffffff;
 }
 
+.team-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #000000;
+}
+
 .people-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
