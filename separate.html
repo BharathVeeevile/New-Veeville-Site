@@ -149,7 +149,7 @@
     </div>
   </div>
 
-  <!-- JS CODE -->
+  <!-- JS CODE scrooling nvagation and dots-->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       // Core elements
@@ -160,12 +160,10 @@
 
       // State variables
       let currentSectionIndex = 0
-      let isScrolling = false
-      let isScrollLocked = false
+      let isAnimating = false
 
-      // Timing controls - REDUCED for faster transitions
-      const scrollDuration = 600 // Reduced from 1000
-      const lockDuration = 700 // Reduced from 1200
+      // Animation settings - faster animation for responsiveness
+      const animationDuration = 400 // ms
 
       // Initialize active states
       function initializeActiveStates() {
@@ -191,31 +189,26 @@
         }
       }
 
-      // Scroll to section
+      // Scroll to section with immediate response
       function scrollToSection(index) {
-        if (isScrollLocked || index < 0 || index >= sections.length) return
+        if (isAnimating || index < 0 || index >= sections.length) return
 
-        isScrollLocked = true
-        isScrolling = true
+        isAnimating = true
         currentSectionIndex = index
 
-        // Use scrollIntoView for smooth scrolling
+        // Scroll to the section
         sections[index].scrollIntoView({ behavior: "smooth" })
         updateActiveStates(index)
 
-        // Release locks after animation completes
+        // Release animation lock after animation completes
         setTimeout(() => {
-          isScrolling = false
-        }, scrollDuration)
-
-        setTimeout(() => {
-          isScrollLocked = false
-        }, lockDuration)
+          isAnimating = false
+        }, animationDuration)
       }
 
-      // Sequential scrolling - ensures we visit each section in order
-      function sequentialScroll(direction) {
-        if (isScrollLocked) return
+      // Scroll direction control - ensures sequential scrolling
+      function handleScroll(direction) {
+        if (isAnimating) return
 
         const targetIndex = currentSectionIndex + direction
         if (targetIndex >= 0 && targetIndex < sections.length) {
@@ -223,50 +216,48 @@
         }
       }
 
-      // Improved wheel event handler with debounce
-      let wheelTimeout
-      let wheelEvents = []
-      const WHEEL_DEBOUNCE = 20 // Reduced from 50ms for faster response
+      // Touchpad scroll handling - completely rewritten for reliability
+      let lastScrollTime = 0
+      const scrollCooldown = 50 // ms between scroll actions
+      let scrollDirection = 0
+      const scrollThreshold = 10 // minimum delta to trigger scroll
 
       window.addEventListener(
         "wheel",
         (e) => {
           e.preventDefault()
 
-          if (isScrollLocked) return
+          const now = Date.now()
+          const delta = e.deltaY
 
-          // Store the wheel event
-          wheelEvents.push(e.deltaY)
+          // Determine scroll direction with threshold to filter out small movements
+          if (Math.abs(delta) > scrollThreshold) {
+            const newDirection = delta > 0 ? 1 : -1
 
-          clearTimeout(wheelTimeout)
-          wheelTimeout = setTimeout(() => {
-            // Process accumulated wheel events
-            if (wheelEvents.length > 0) {
-              // Calculate the average direction
-              const sum = wheelEvents.reduce((acc, val) => acc + val, 0)
-              const direction = sum > 0 ? 1 : -1
-
-              // Scroll one section at a time in the determined direction
-              sequentialScroll(direction)
-
-              // Reset wheel events
-              wheelEvents = []
+            // Only allow scrolling after cooldown period
+            if (now - lastScrollTime > scrollCooldown) {
+              // Only scroll if direction is different or we haven't scrolled recently
+              if (newDirection !== scrollDirection || now - lastScrollTime > 500) {
+                handleScroll(newDirection)
+                lastScrollTime = now
+                scrollDirection = newDirection
+              }
             }
-          }, WHEEL_DEBOUNCE)
+          }
         },
         { passive: false },
       )
 
       // Keyboard navigation
       document.addEventListener("keydown", (e) => {
-        if (isScrollLocked) return
+        if (isAnimating) return
 
         if (e.key === "ArrowDown" || e.key === "PageDown") {
           e.preventDefault()
-          sequentialScroll(1)
+          handleScroll(1)
         } else if (e.key === "ArrowUp" || e.key === "PageUp") {
           e.preventDefault()
-          sequentialScroll(-1)
+          handleScroll(-1)
         }
       })
 
@@ -280,29 +271,29 @@
       })
 
       document.addEventListener("touchend", (e) => {
-        if (isScrollLocked) return
+        if (isAnimating) return
 
         touchEndY = e.changedTouches[0].clientY
         const touchDiff = touchStartY - touchEndY
 
         if (Math.abs(touchDiff) > TOUCH_THRESHOLD) {
           const direction = touchDiff > 0 ? 1 : -1
-          sequentialScroll(direction)
+          handleScroll(direction)
         }
       })
 
       // Navigation dot clicks
       dots.forEach((dot) => {
         dot.addEventListener("click", function () {
-          if (isScrollLocked) return
+          if (isAnimating) return
 
           const targetIndex = Number.parseInt(this.getAttribute("data-target"))
 
-          // For sequential navigation, move one section at a time
+          // Move one section at a time toward target
           if (targetIndex > currentSectionIndex) {
-            sequentialScroll(1)
+            handleScroll(1)
           } else if (targetIndex < currentSectionIndex) {
-            sequentialScroll(-1)
+            handleScroll(-1)
           }
         })
       })
@@ -312,15 +303,15 @@
         if (index > 0 && index <= 3) {
           link.addEventListener("click", (e) => {
             e.preventDefault()
-            if (isScrollLocked) return
+            if (isAnimating) return
 
             const targetSection = index - 1
 
-            // For sequential navigation, move one section at a time
+            // Move one section at a time toward target
             if (targetSection > currentSectionIndex) {
-              sequentialScroll(1)
+              handleScroll(1)
             } else if (targetSection < currentSectionIndex) {
-              sequentialScroll(-1)
+              handleScroll(-1)
             }
           })
         }
@@ -328,7 +319,7 @@
 
       // Fix for programmatic scrolling
       sectionContainer.addEventListener("scroll", () => {
-        if (!isScrolling) {
+        if (!isAnimating) {
           // Find which section is most visible
           let maxVisibility = 0
           let visibleSectionIndex = currentSectionIndex
@@ -357,9 +348,6 @@
     })
 
   </script>
-
-
-
 
 
 
