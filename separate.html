@@ -151,197 +151,211 @@
 
   <!-- JS CODE -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener("DOMContentLoaded", () => {
       // Core elements
-      const sections = document.querySelectorAll('.video-section, .footer-section');
-      const dots = document.querySelectorAll('.dot');
-      const navLinks = document.querySelectorAll('.nav-links a');
+      const sectionContainer = document.querySelector(".section-container")
+      const sections = document.querySelectorAll(".video-section, .footer-section")
+      const dots = document.querySelectorAll(".dot")
+      const navLinks = document.querySelectorAll(".nav-links a")
 
       // State variables
-      let currentSectionIndex = 0;
-      let isTransitioning = false;
-      let isScrollLocked = false;
-      let scrollTimeout;
+      let currentSectionIndex = 0
+      let isScrolling = false
+      let isScrollLocked = false
 
-      // Timing controls
-      const transitionDuration = 1000;
-      const lockDuration = 1200;
-
-      // Scroll queue
-      let scrollQueue = [];
-      let isProcessingQueue = false;
-
-      // Touchpad scroll handling variables
-      let wheelDeltaSum = 0;
-      let lastWheelDirection = 0;
-      const SCROLL_THRESHOLD = 100;
-      const RESET_DELAY = 150;
+      // Timing controls - increased for more reliable section transitions
+      const scrollDuration = 1000
+      const lockDuration = 1200
 
       // Initialize active states
       function initializeActiveStates() {
-        if (dots.length > 0) dots[0].classList.add('active');
-        if (navLinks.length > 1) navLinks[1].classList.add('active');
+        if (dots.length > 0) dots[0].classList.add("active")
+        if (navLinks.length > 1) navLinks[1].classList.add("active")
       }
 
       // Update active states
       function updateActiveStates(sectionIndex) {
-        dots.forEach(dot => dot.classList.remove('active'));
-        const activeDot = document.querySelector(`.dot[data-target="${sectionIndex}"]`);
-        if (activeDot) activeDot.classList.add('active');
+        // Update dots
+        dots.forEach((dot) => dot.classList.remove("active"))
+        const activeDot = document.querySelector(`.dot[data-target="${sectionIndex}"]`)
+        if (activeDot) activeDot.classList.add("active")
 
-        navLinks.forEach(link => link.classList.remove('active'));
+        // Update nav links
+        navLinks.forEach((link) => link.classList.remove("active"))
         if (sectionIndex === 0) {
-          navLinks[1]?.classList.add('active');
+          navLinks[1]?.classList.add("active")
         } else if (sectionIndex === 1) {
-          navLinks[2]?.classList.add('active');
+          navLinks[2]?.classList.add("active")
         } else if (sectionIndex === 2) {
-          navLinks[3]?.classList.add('active');
+          navLinks[3]?.classList.add("active")
         }
       }
 
-      // Process scroll queue
-      function processScrollQueue() {
-        if (isProcessingQueue || scrollQueue.length === 0) return;
-        isProcessingQueue = true;
+      // Scroll to section
+      function scrollToSection(index) {
+        if (isScrollLocked || index < 0 || index >= sections.length) return
 
-        const direction = scrollQueue.shift();
-        executeScroll(direction, () => {
-          setTimeout(() => {
-            isProcessingQueue = false;
-            processScrollQueue();
-          }, 100);
-        });
-      }
+        isScrollLocked = true
+        isScrolling = true
+        currentSectionIndex = index
 
-      // Queue scroll action
-      function queueScrollAction(direction) {
-        if ((direction === 1 || direction === -1) && scrollQueue.length === 0) {
-          scrollQueue.push(direction);
-          processScrollQueue();
-          return true;
-        }
-        return false;
-      }
+        // Use scrollIntoView for smooth scrolling
+        sections[index].scrollIntoView({ behavior: "smooth" })
+        updateActiveStates(index)
 
-      // Execute scroll
-      function executeScroll(direction, callback) {
-        if (isTransitioning) {
-          if (callback) callback();
-          return false;
-        }
-
-        const targetIndex = currentSectionIndex + direction;
-        if (targetIndex < 0 || targetIndex >= sections.length) {
-          if (callback) callback();
-          return false;
-        }
-
-        isTransitioning = true;
-        isScrollLocked = true;
-        currentSectionIndex = targetIndex;
-
-        sections[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
-        updateActiveStates(targetIndex);
-
-        clearTimeout(scrollTimeout);
+        // Release locks after animation completes
         setTimeout(() => {
-          isTransitioning = false;
-          if (callback) callback();
-        }, transitionDuration);
+          isScrolling = false
+        }, scrollDuration)
 
         setTimeout(() => {
-          isScrollLocked = false;
-        }, lockDuration);
-
-        return true;
+          isScrollLocked = false
+        }, lockDuration)
       }
 
-      // Enhanced wheel handler for touchpad
-      window.addEventListener('wheel', function (e) {
-        e.preventDefault();
-        if (isScrollLocked || isTransitioning) return;
+      // Sequential scrolling - ensures we visit each section in order
+      function sequentialScroll(direction) {
+        if (isScrollLocked) return
 
-        const currentDirection = Math.sign(e.deltaY);
-
-        if (lastWheelDirection !== currentDirection) {
-          wheelDeltaSum = 0;
-          lastWheelDirection = currentDirection;
+        const targetIndex = currentSectionIndex + direction
+        if (targetIndex >= 0 && targetIndex < sections.length) {
+          scrollToSection(targetIndex)
         }
+      }
 
-        wheelDeltaSum += Math.abs(e.deltaY);
-        clearTimeout(this.wheelResetTimer);
+      // Improved wheel event handler with debounce
+      let wheelTimeout
+      let wheelEvents = []
+      const WHEEL_DEBOUNCE = 50 // ms
 
-        if (wheelDeltaSum >= SCROLL_THRESHOLD) {
-          const direction = currentDirection;
-          if (queueScrollAction(direction)) {
-            wheelDeltaSum = 0;
-            lastWheelDirection = 0;
+      window.addEventListener(
+        "wheel",
+        (e) => {
+          e.preventDefault()
+
+          if (isScrollLocked) return
+
+          // Store the wheel event
+          wheelEvents.push(e.deltaY)
+
+          clearTimeout(wheelTimeout)
+          wheelTimeout = setTimeout(() => {
+            // Process accumulated wheel events
+            if (wheelEvents.length > 0) {
+              // Calculate the average direction
+              const sum = wheelEvents.reduce((acc, val) => acc + val, 0)
+              const direction = sum > 0 ? 1 : -1
+
+              // Scroll one section at a time in the determined direction
+              sequentialScroll(direction)
+
+              // Reset wheel events
+              wheelEvents = []
+            }
+          }, WHEEL_DEBOUNCE)
+        },
+        { passive: false },
+      )
+
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (isScrollLocked) return
+
+        if (e.key === "ArrowDown" || e.key === "PageDown") {
+          e.preventDefault()
+          sequentialScroll(1)
+        } else if (e.key === "ArrowUp" || e.key === "PageUp") {
+          e.preventDefault()
+          sequentialScroll(-1)
+        }
+      })
+
+      // Touch navigation
+      let touchStartY = 0
+      let touchEndY = 0
+      const TOUCH_THRESHOLD = 50
+
+      document.addEventListener("touchstart", (e) => {
+        touchStartY = e.touches[0].clientY
+      })
+
+      document.addEventListener("touchend", (e) => {
+        if (isScrollLocked) return
+
+        touchEndY = e.changedTouches[0].clientY
+        const touchDiff = touchStartY - touchEndY
+
+        if (Math.abs(touchDiff) > TOUCH_THRESHOLD) {
+          const direction = touchDiff > 0 ? 1 : -1
+          sequentialScroll(direction)
+        }
+      })
+
+      // Navigation dot clicks
+      dots.forEach((dot) => {
+        dot.addEventListener("click", function () {
+          if (isScrollLocked) return
+
+          const targetIndex = Number.parseInt(this.getAttribute("data-target"))
+
+          // For sequential navigation, move one section at a time
+          if (targetIndex > currentSectionIndex) {
+            sequentialScroll(1)
+          } else if (targetIndex < currentSectionIndex) {
+            sequentialScroll(-1)
           }
-        } else {
-          this.wheelResetTimer = setTimeout(() => {
-            wheelDeltaSum = 0;
-            lastWheelDirection = 0;
-          }, RESET_DELAY);
-        }
-      }, { passive: false });
+        })
+      })
 
-      // Original event handlers (keep unchanged)
-      document.addEventListener('keydown', function (e) {
-        if (isScrollLocked) return;
-        if (e.key === 'ArrowDown' || e.key === 'PageDown') {
-          e.preventDefault();
-          queueScrollAction(1);
-        } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-          e.preventDefault();
-          queueScrollAction(-1);
-        }
-      });
-
-      let touchStartY = 0;
-      document.addEventListener('touchstart', function (e) {
-        touchStartY = e.touches[0].clientY;
-      });
-
-      document.addEventListener('touchend', function (e) {
-        if (isScrollLocked) return;
-        const touchEndY = e.changedTouches[0].clientY;
-        const touchDiff = touchStartY - touchEndY;
-        if (Math.abs(touchDiff) > 50) {
-          const direction = touchDiff > 0 ? 1 : -1;
-          queueScrollAction(direction);
-        }
-      });
-
-      dots.forEach(dot => {
-        dot.addEventListener('click', function () {
-          if (isScrollLocked) return;
-          const targetIndex = parseInt(this.getAttribute('data-target'));
-          moveTowardTarget(targetIndex);
-        });
-      });
-
+      // Nav link clicks
       navLinks.forEach((link, index) => {
         if (index > 0 && index <= 3) {
-          link.addEventListener('click', function (e) {
-            e.preventDefault();
-            if (isScrollLocked) return;
-            const targetSection = index - 1;
-            moveTowardTarget(targetSection);
-          });
-        }
-      });
+          link.addEventListener("click", (e) => {
+            e.preventDefault()
+            if (isScrollLocked) return
 
-      function moveTowardTarget(targetIndex) {
-        if (targetIndex > currentSectionIndex) {
-          queueScrollAction(1);
-        } else if (targetIndex < currentSectionIndex) {
-          queueScrollAction(-1);
+            const targetSection = index - 1
+
+            // For sequential navigation, move one section at a time
+            if (targetSection > currentSectionIndex) {
+              sequentialScroll(1)
+            } else if (targetSection < currentSectionIndex) {
+              sequentialScroll(-1)
+            }
+          })
         }
-      }
+      })
+
+      // Fix for programmatic scrolling
+      sectionContainer.addEventListener("scroll", () => {
+        if (!isScrolling) {
+          // Find which section is most visible
+          let maxVisibility = 0
+          let visibleSectionIndex = currentSectionIndex
+
+          sections.forEach((section, index) => {
+            const rect = section.getBoundingClientRect()
+            const viewHeight = Math.min(window.innerHeight, rect.height)
+            const visibleHeight = Math.min(rect.bottom, viewHeight) - Math.max(rect.top, 0)
+            const visibility = visibleHeight / viewHeight
+
+            if (visibility > maxVisibility) {
+              maxVisibility = visibility
+              visibleSectionIndex = index
+            }
+          })
+
+          if (visibleSectionIndex !== currentSectionIndex) {
+            currentSectionIndex = visibleSectionIndex
+            updateActiveStates(currentSectionIndex)
+          }
+        }
+      })
 
       // Initialize
-      initializeActiveStates();
-    });
+      initializeActiveStates()
+    })
+
   </script>
 
 
