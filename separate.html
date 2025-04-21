@@ -163,9 +163,9 @@
       let isScrolling = false
       let isScrollLocked = false
 
-      // Timing controls - increased for more reliable section transitions
-      const scrollDuration = 1000
-      const lockDuration = 1200
+      // Timing controls - REDUCED for faster transitions
+      const scrollDuration = 600 // Reduced from 1000
+      const lockDuration = 700 // Reduced from 1200
 
       // Initialize active states
       function initializeActiveStates() {
@@ -226,7 +226,7 @@
       // Improved wheel event handler with debounce
       let wheelTimeout
       let wheelEvents = []
-      const WHEEL_DEBOUNCE = 50 // ms
+      const WHEEL_DEBOUNCE = 20 // Reduced from 50ms for faster response
 
       window.addEventListener(
         "wheel",
@@ -357,7 +357,6 @@
     })
 
   </script>
-
 
 
 
