@@ -150,204 +150,155 @@
   </div>
 
   <!-- JS CODE scrooling nvagation and dots-->
+
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // Core elements
-      const sectionContainer = document.querySelector(".section-container")
-      const sections = document.querySelectorAll(".video-section, .footer-section")
-      const dots = document.querySelectorAll(".dot")
-      const navLinks = document.querySelectorAll(".nav-links a")
+      const sectionContainer = document.querySelector(".section-container");
+      const sections = document.querySelectorAll(".video-section, .footer-section");
+      const dots = document.querySelectorAll(".dot");
+      const navLinks = document.querySelectorAll(".nav-links a");
 
-      // State variables
-      let currentSectionIndex = 0
-      let isAnimating = false
+      let currentSectionIndex = 0;
+      let isAnimating = false;
 
-      // Animation settings - faster animation for responsiveness
-      const animationDuration = 400 // ms
-
-      // Initialize active states
       function initializeActiveStates() {
-        if (dots.length > 0) dots[0].classList.add("active")
-        if (navLinks.length > 1) navLinks[1].classList.add("active")
+        if (dots.length > 0) dots[0].classList.add("active");
+        if (navLinks.length > 1) navLinks[1].classList.add("active");
       }
 
-      // Update active states
       function updateActiveStates(sectionIndex) {
-        // Update dots
-        dots.forEach((dot) => dot.classList.remove("active"))
-        const activeDot = document.querySelector(`.dot[data-target="${sectionIndex}"]`)
-        if (activeDot) activeDot.classList.add("active")
+        dots.forEach(dot => dot.classList.remove("active"));
+        const activeDot = document.querySelector(`.dot[data-target="${sectionIndex}"]`);
+        if (activeDot) activeDot.classList.add("active");
 
-        // Update nav links
-        navLinks.forEach((link) => link.classList.remove("active"))
-        if (sectionIndex === 0) {
-          navLinks[1]?.classList.add("active")
-        } else if (sectionIndex === 1) {
-          navLinks[2]?.classList.add("active")
-        } else if (sectionIndex === 2) {
-          navLinks[3]?.classList.add("active")
-        }
+        navLinks.forEach(link => link.classList.remove("active"));
+        if (sectionIndex === 0) navLinks[1]?.classList.add("active");
+        else if (sectionIndex === 1) navLinks[2]?.classList.add("active");
+        else if (sectionIndex === 2) navLinks[3]?.classList.add("active");
       }
 
-      // Scroll to section with immediate response
       function scrollToSection(index) {
-        if (isAnimating || index < 0 || index >= sections.length) return
+        if (isAnimating || index < 0 || index >= sections.length) return;
+        isAnimating = true;
+        currentSectionIndex = index;
 
-        isAnimating = true
-        currentSectionIndex = index
+        sections[index].scrollIntoView({ behavior: "smooth" });
+        updateActiveStates(index);
 
-        // Scroll to the section
-        sections[index].scrollIntoView({ behavior: "smooth" })
-        updateActiveStates(index)
-
-        // Release animation lock after animation completes
+        // Unlock after the smooth scroll ends
         setTimeout(() => {
-          isAnimating = false
-        }, animationDuration)
+          isAnimating = false;
+        }, 500); // Adjust if scroll duration changes
       }
 
-      // Scroll direction control - ensures sequential scrolling
       function handleScroll(direction) {
-        if (isAnimating) return
-
-        const targetIndex = currentSectionIndex + direction
-        if (targetIndex >= 0 && targetIndex < sections.length) {
-          scrollToSection(targetIndex)
-        }
+        const targetIndex = currentSectionIndex + direction;
+        scrollToSection(targetIndex);
       }
 
-      // Touchpad scroll handling - completely rewritten for reliability
-      let lastScrollTime = 0
-      const scrollCooldown = 50 // ms between scroll actions
-      let scrollDirection = 0
-      const scrollThreshold = 10 // minimum delta to trigger scroll
+      // ✅ Scroll handler with lock per gesture
+      let scrollGestureLocked = false;
 
-      window.addEventListener(
-        "wheel",
-        (e) => {
-          e.preventDefault()
+      window.addEventListener("wheel", (e) => {
+        e.preventDefault();
 
-          const now = Date.now()
-          const delta = e.deltaY
+        if (scrollGestureLocked || isAnimating) return;
 
-          // Determine scroll direction with threshold to filter out small movements
-          if (Math.abs(delta) > scrollThreshold) {
-            const newDirection = delta > 0 ? 1 : -1
+        const delta = e.deltaY;
+        if (Math.abs(delta) < 20) return; // Ignore micro scrolls
 
-            // Only allow scrolling after cooldown period
-            if (now - lastScrollTime > scrollCooldown) {
-              // Only scroll if direction is different or we haven't scrolled recently
-              if (newDirection !== scrollDirection || now - lastScrollTime > 500) {
-                handleScroll(newDirection)
-                lastScrollTime = now
-                scrollDirection = newDirection
-              }
-            }
-          }
-        },
-        { passive: false },
-      )
+        scrollGestureLocked = true;
+        const direction = delta > 0 ? 1 : -1;
+        handleScroll(direction);
 
-      // Keyboard navigation
+        // Lock gesture for a fixed time to prevent skips
+        setTimeout(() => {
+          scrollGestureLocked = false;
+        }, 600); // Should be greater than scrollToSection timeout
+      }, { passive: false });
+
+      // Keyboard scroll
       document.addEventListener("keydown", (e) => {
-        if (isAnimating) return
-
+        if (isAnimating) return;
         if (e.key === "ArrowDown" || e.key === "PageDown") {
-          e.preventDefault()
-          handleScroll(1)
+          e.preventDefault();
+          handleScroll(1);
         } else if (e.key === "ArrowUp" || e.key === "PageUp") {
-          e.preventDefault()
-          handleScroll(-1)
+          e.preventDefault();
+          handleScroll(-1);
         }
-      })
+      });
 
-      // Touch navigation
-      let touchStartY = 0
-      let touchEndY = 0
-      const TOUCH_THRESHOLD = 50
+      // Touch scroll
+      let touchStartY = 0;
+      let touchEndY = 0;
+      const TOUCH_THRESHOLD = 50;
 
       document.addEventListener("touchstart", (e) => {
-        touchStartY = e.touches[0].clientY
-      })
+        touchStartY = e.touches[0].clientY;
+      });
 
       document.addEventListener("touchend", (e) => {
-        if (isAnimating) return
-
-        touchEndY = e.changedTouches[0].clientY
-        const touchDiff = touchStartY - touchEndY
-
-        if (Math.abs(touchDiff) > TOUCH_THRESHOLD) {
-          const direction = touchDiff > 0 ? 1 : -1
-          handleScroll(direction)
+        if (isAnimating) return;
+        touchEndY = e.changedTouches[0].clientY;
+        const diff = touchStartY - touchEndY;
+        if (Math.abs(diff) > TOUCH_THRESHOLD) {
+          const direction = diff > 0 ? 1 : -1;
+          handleScroll(direction);
         }
-      })
+      });
 
-      // Navigation dot clicks
-      dots.forEach((dot) => {
+      // Dot clicks
+      dots.forEach(dot => {
         dot.addEventListener("click", function () {
-          if (isAnimating) return
-
-          const targetIndex = Number.parseInt(this.getAttribute("data-target"))
-
-          // Move one section at a time toward target
-          if (targetIndex > currentSectionIndex) {
-            handleScroll(1)
-          } else if (targetIndex < currentSectionIndex) {
-            handleScroll(-1)
-          }
-        })
-      })
+          if (isAnimating) return;
+          const targetIndex = parseInt(this.getAttribute("data-target"));
+          scrollToSection(targetIndex);
+        });
+      });
 
       // Nav link clicks
       navLinks.forEach((link, index) => {
         if (index > 0 && index <= 3) {
           link.addEventListener("click", (e) => {
-            e.preventDefault()
-            if (isAnimating) return
-
-            const targetSection = index - 1
-
-            // Move one section at a time toward target
-            if (targetSection > currentSectionIndex) {
-              handleScroll(1)
-            } else if (targetSection < currentSectionIndex) {
-              handleScroll(-1)
-            }
-          })
+            e.preventDefault();
+            if (isAnimating) return;
+            const targetSection = index - 1;
+            scrollToSection(targetSection);
+          });
         }
-      })
+      });
 
-      // Fix for programmatic scrolling
+      // Sync scroll position if user scrolls manually
       sectionContainer.addEventListener("scroll", () => {
         if (!isAnimating) {
-          // Find which section is most visible
-          let maxVisibility = 0
-          let visibleSectionIndex = currentSectionIndex
+          let maxVisibility = 0;
+          let visibleSectionIndex = currentSectionIndex;
 
           sections.forEach((section, index) => {
-            const rect = section.getBoundingClientRect()
-            const viewHeight = Math.min(window.innerHeight, rect.height)
-            const visibleHeight = Math.min(rect.bottom, viewHeight) - Math.max(rect.top, 0)
-            const visibility = visibleHeight / viewHeight
+            const rect = section.getBoundingClientRect();
+            const viewHeight = Math.min(window.innerHeight, rect.height);
+            const visibleHeight = Math.min(rect.bottom, viewHeight) - Math.max(rect.top, 0);
+            const visibility = visibleHeight / viewHeight;
 
             if (visibility > maxVisibility) {
-              maxVisibility = visibility
-              visibleSectionIndex = index
+              maxVisibility = visibility;
+              visibleSectionIndex = index;
             }
-          })
+          });
 
           if (visibleSectionIndex !== currentSectionIndex) {
-            currentSectionIndex = visibleSectionIndex
-            updateActiveStates(currentSectionIndex)
+            currentSectionIndex = visibleSectionIndex;
+            updateActiveStates(currentSectionIndex);
           }
         }
-      })
+      });
 
-      // Initialize
-      initializeActiveStates()
-    })
-
+      initializeActiveStates();
+    });
   </script>
+
 
 
 
