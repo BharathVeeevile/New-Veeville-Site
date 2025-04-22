@@ -936,6 +936,177 @@ body {
 
 
 
+  /* About section */
+/* Base styles */
+.vee-section {
+  padding: 60px 20px;
+  background-color: #fff;
+}
+
+.vee-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.vee-text {
+  flex: 1 1 50%;
+  padding-right: 30px;
+  box-sizing: border-box;
+  color: #777;
+}
+
+.vee-text h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.vee-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.vee-image {
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.vee-image img {
+  max-width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .vee-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .vee-text,
+  .vee-image {
+    flex: 1 1 100%;
+    padding: 0;
+  }
+
+  .vee-image img {
+    max-width: 70%;
+    max-height: 250px;
+  }
+
+  .vee-text h1 {
+    font-size: 2rem;
+  }
+
+  .vee-text p {
+    font-size: 0.95rem;
+  }
+}
+
+
+
+/* categories of work */
+
+
+/* Section styles */
+.what-we-do {
+  padding: 60px 20px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.section-titles {
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #666;
+  margin-bottom: 50px;
+}
+
+/* Grid styles */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 50px 20px;
+  justify-items: center;
+}
+
+.service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 150px;
+}
+
+.service-item img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 12px;
+  object-fit: contain;
+}
+
+.service-item p {
+  font-size: 0.95rem;
+  color: #444;
+  margin: 0;
+}
+
+/* Responsiveness */
+@media (max-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-item {
+    max-width: 100%;
+  }
+}
+
+
+
+
+
+
+
 
   /* Next Project */
 
