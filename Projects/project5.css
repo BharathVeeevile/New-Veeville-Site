@@ -1180,7 +1180,186 @@ body {
         margin-bottom: 0.5rem;
     }
 
-    .social-icons {
-        margin-top: 15px;
-    }
+  .social-icons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+  }
 }
+/* sticky bar*/
+
+.sticky-data {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(244, 244, 244, 0.95);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+  }
+  
+  .sticky-data.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .sticky-data .icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .sticky-data .icon-wrapper i {
+    font-size: 18px;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+  
+  .sticky-data .icon-wrapper:hover i {
+    color: #007acc;
+  }
+  
+  .tooltip {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    z-index: 1000;
+  }
+  
+  .left-icon:hover .tooltip {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+  
+  .right-icon:hover .tooltip {
+    opacity: 1;
+    transform: translateY(-5px) translateX(-100px);
+  }
+  
+  .sticky-data-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #007acc;
+    text-align: center;
+  }
+  
+  .sticky-card {
+    text-decoration: none;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .sticky-data {
+      height: 40px;
+      padding: 0 10px;
+    }
+  
+    .sticky-data-text {
+      font-size: 14px;
+    }
+  
+    .tooltip {
+      font-size: 12px;
+    }
+  }
+
+
+
+
+  /* Next Project */
+
+
+/* Project Navigation Section */
+.project-navigation-section {
+    width: 100%;
+    max-width: 1400px;
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  
+  /* Divider */
+  .divider {
+    border: none;
+    height: 2px;
+    background-color: #ccc;
+    margin-bottom: 20px;
+  }
+  
+  /* Navigation Container */
+  .project-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  /* Navigation Buttons */
+  .project-navigation a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 25px;
+    color: #fff;
+    background-color: #007BFF;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .project-navigation a:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Branding Title */
+  .branding-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+    background-color: #FFD700;
+    padding: 8px 20px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+  
+  .Categories-data {
+    background-color: #FFD700 !important;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .project-navigation {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .project-navigation a {
+      text-align: center;
+      width: 100%;
+    }
+  
+    .branding-title {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
+  
+  

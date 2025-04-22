@@ -660,8 +660,11 @@ body {
       margin-bottom: 0.5rem;
     }
   
+    
     .social-icons {
-      margin-top: 15px;
-    }
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+      }
   }
   

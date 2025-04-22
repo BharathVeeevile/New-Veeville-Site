@@ -580,6 +580,10 @@ body {
       justify-content: space-between;
       flex-direction: column;
     }
+
+    .footer-bottom a {
+      margin-left: 0px;
+    }
   
     .footer-bottom p {
       font-size: 16px;
@@ -611,6 +615,8 @@ body {
   
     .social-icons {
       margin-top: 15px;
+      display: flex;
+      justify-content: center;
     }
   }
 

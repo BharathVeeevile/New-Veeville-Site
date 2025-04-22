@@ -150,156 +150,240 @@
   </div>
 
   <!-- JS CODE scrooling nvagation and dots-->
-
-
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const sectionContainer = document.querySelector(".section-container");
-      const sections = document.querySelectorAll(".video-section, .footer-section");
-      const dots = document.querySelectorAll(".dot");
-      const navLinks = document.querySelectorAll(".nav-links a");
+      // Core elements
+      const sectionContainer = document.querySelector(".section-container")
+      const sections = document.querySelectorAll(".video-section, .footer-section")
+      const dots = document.querySelectorAll(".dot")
+      const navLinks = document.querySelectorAll(".nav-links a")
 
-      let currentSectionIndex = 0;
-      let isAnimating = false;
+      // State variables
+      let currentSectionIndex = 0
+      let isScrolling = false
+      let isScrollLocked = false
+      let scrollTimeout = null
 
+      // Animation settings
+      const scrollDuration = 800 // ms - longer duration to ensure smooth transitions
+      const scrollLockTime = 800 // ms - time to lock scroll after a scroll action
+
+      // Initialize active states
       function initializeActiveStates() {
-        if (dots.length > 0) dots[0].classList.add("active");
-        if (navLinks.length > 1) navLinks[1].classList.add("active");
+        if (dots.length > 0) dots[0].classList.add("active")
+        if (navLinks.length > 1) navLinks[1].classList.add("active")
       }
 
+      // Update active states
       function updateActiveStates(sectionIndex) {
-        dots.forEach(dot => dot.classList.remove("active"));
-        const activeDot = document.querySelector(`.dot[data-target="${sectionIndex}"]`);
-        if (activeDot) activeDot.classList.add("active");
+        // Update dots
+        dots.forEach((dot) => dot.classList.remove("active"))
+        const activeDot = document.querySelector(`.dot[data-target="${sectionIndex}"]`)
+        if (activeDot) activeDot.classList.add("active")
 
-        navLinks.forEach(link => link.classList.remove("active"));
-        if (sectionIndex === 0) navLinks[1]?.classList.add("active");
-        else if (sectionIndex === 1) navLinks[2]?.classList.add("active");
-        else if (sectionIndex === 2) navLinks[3]?.classList.add("active");
+        // Update nav links
+        navLinks.forEach((link) => link.classList.remove("active"))
+        if (sectionIndex === 0) {
+          navLinks[1]?.classList.add("active")
+        } else if (sectionIndex === 1) {
+          navLinks[2]?.classList.add("active")
+        } else if (sectionIndex === 2) {
+          navLinks[3]?.classList.add("active")
+        }
       }
 
+      // Completely disable native scrolling
+      function disableNativeScroll() {
+        document.body.style.overflow = 'hidden'
+        sectionContainer.style.overflow = 'hidden'
+      }
+
+      // Scroll to section with controlled animation
       function scrollToSection(index) {
-        if (isAnimating || index < 0 || index >= sections.length) return;
-        isAnimating = true;
-        currentSectionIndex = index;
+        if (isScrolling || index < 0 || index >= sections.length) return false
 
-        sections[index].scrollIntoView({ behavior: "smooth" });
-        updateActiveStates(index);
+        isScrolling = true
+        isScrollLocked = true
 
-        // Unlock after the smooth scroll ends
-        setTimeout(() => {
-          isAnimating = false;
-        }, 500); // Adjust if scroll duration changes
+        // Clear any existing timeout
+        if (scrollTimeout) {
+          clearTimeout(scrollTimeout)
+        }
+
+        // Update current index
+        currentSectionIndex = index
+
+        // Update UI
+        updateActiveStates(index)
+
+        // Scroll to section with smooth behavior
+        sections[index].scrollIntoView({ behavior: "smooth" })
+
+        // Set timeout to release scrolling lock
+        scrollTimeout = setTimeout(() => {
+          isScrolling = false
+
+          // Add a small delay before allowing another scroll
+          setTimeout(() => {
+            isScrollLocked = false
+          }, 50)
+        }, scrollDuration)
+
+        return true
       }
 
+      // Handle scroll direction with strict sequential movement
       function handleScroll(direction) {
-        const targetIndex = currentSectionIndex + direction;
-        scrollToSection(targetIndex);
+        // If we're already scrolling or locked, ignore this scroll event
+        if (isScrolling || isScrollLocked) return
+
+        // Calculate target section
+        const targetIndex = currentSectionIndex + direction
+
+        // Only proceed if target is valid
+        if (targetIndex >= 0 && targetIndex < sections.length) {
+          // Lock scrolling immediately to prevent multiple events
+          isScrollLocked = true
+
+          // Scroll to the target section
+          if (scrollToSection(targetIndex)) {
+            // If scroll was successful, lock further scrolling for a period
+            setTimeout(() => {
+              isScrollLocked = false
+            }, scrollLockTime)
+          } else {
+            // If scroll failed, release lock
+            isScrollLocked = false
+          }
+        }
       }
 
-      // ✅ Scroll handler with lock per gesture
-      let scrollGestureLocked = false;
+      // Wheel event handler - completely rewritten
+      let lastWheelDirection = 0
+      let lastWheelTime = 0
+      const wheelThreshold = 10
 
       window.addEventListener("wheel", (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
-        if (scrollGestureLocked || isAnimating) return;
+        // Get current time for throttling
+        const now = Date.now()
 
-        const delta = e.deltaY;
-        if (Math.abs(delta) < 20) return; // Ignore micro scrolls
+        // If we're in a locked state, completely ignore wheel events
+        if (isScrolling || isScrollLocked) return
 
-        scrollGestureLocked = true;
-        const direction = delta > 0 ? 1 : -1;
-        handleScroll(direction);
+        // Determine direction with threshold
+        if (Math.abs(e.deltaY) > wheelThreshold) {
+          const direction = e.deltaY > 0 ? 1 : -1
 
-        // Lock gesture for a fixed time to prevent skips
-        setTimeout(() => {
-          scrollGestureLocked = false;
-        }, 600); // Should be greater than scrollToSection timeout
-      }, { passive: false });
-
-      // Keyboard scroll
-      document.addEventListener("keydown", (e) => {
-        if (isAnimating) return;
-        if (e.key === "ArrowDown" || e.key === "PageDown") {
-          e.preventDefault();
-          handleScroll(1);
-        } else if (e.key === "ArrowUp" || e.key === "PageUp") {
-          e.preventDefault();
-          handleScroll(-1);
+          // Only process if it's been long enough since last wheel event
+          // or if the direction has changed
+          if (now - lastWheelTime > 200 || direction !== lastWheelDirection) {
+            lastWheelDirection = direction
+            lastWheelTime = now
+            handleScroll(direction)
+          }
         }
-      });
+      }, { passive: false })
 
-      // Touch scroll
-      let touchStartY = 0;
-      let touchEndY = 0;
-      const TOUCH_THRESHOLD = 50;
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        // If we're in a locked state, ignore keyboard events
+        if (isScrolling || isScrollLocked) return
+
+        if (e.key === "ArrowDown" || e.key === "PageDown") {
+          e.preventDefault()
+          handleScroll(1)
+        } else if (e.key === "ArrowUp" || e.key === "PageUp") {
+          e.preventDefault()
+          handleScroll(-1)
+        }
+      })
+
+      // Touch navigation - improved
+      let touchStartY = 0
+      let touchStartTime = 0
+      const TOUCH_THRESHOLD = 50
 
       document.addEventListener("touchstart", (e) => {
-        touchStartY = e.touches[0].clientY;
-      });
+        touchStartY = e.touches[0].clientY
+        touchStartTime = Date.now()
+      }, { passive: false })
+
+      document.addEventListener("touchmove", (e) => {
+        // Prevent default to disable native scrolling
+        e.preventDefault()
+      }, { passive: false })
 
       document.addEventListener("touchend", (e) => {
-        if (isAnimating) return;
-        touchEndY = e.changedTouches[0].clientY;
-        const diff = touchStartY - touchEndY;
-        if (Math.abs(diff) > TOUCH_THRESHOLD) {
-          const direction = diff > 0 ? 1 : -1;
-          handleScroll(direction);
-        }
-      });
+        // If we're in a locked state, ignore touch events
+        if (isScrolling || isScrollLocked) return
 
-      // Dot clicks
-      dots.forEach(dot => {
+        const touchEndY = e.changedTouches[0].clientY
+        const touchDiff = touchStartY - touchEndY
+        const touchDuration = Date.now() - touchStartTime
+
+        // Only process if touch was fast enough and long enough
+        if (Math.abs(touchDiff) > TOUCH_THRESHOLD && touchDuration < 300) {
+          const direction = touchDiff > 0 ? 1 : -1
+          handleScroll(direction)
+        }
+      }, { passive: false })
+
+      // Navigation dot clicks
+      dots.forEach((dot) => {
         dot.addEventListener("click", function () {
-          if (isAnimating) return;
-          const targetIndex = parseInt(this.getAttribute("data-target"));
-          scrollToSection(targetIndex);
-        });
-      });
+          // If we're in a locked state, ignore clicks
+          if (isScrolling || isScrollLocked) return
+
+          const targetIndex = parseInt(this.getAttribute("data-target"), 10)
+
+          // Only move one section at a time for sequential navigation
+          if (targetIndex !== currentSectionIndex) {
+            const direction = targetIndex > currentSectionIndex ? 1 : -1
+            handleScroll(direction)
+          }
+        })
+      })
 
       // Nav link clicks
       navLinks.forEach((link, index) => {
         if (index > 0 && index <= 3) {
           link.addEventListener("click", (e) => {
-            e.preventDefault();
-            if (isAnimating) return;
-            const targetSection = index - 1;
-            scrollToSection(targetSection);
-          });
-        }
-      });
+            e.preventDefault()
 
-      // Sync scroll position if user scrolls manually
-      sectionContainer.addEventListener("scroll", () => {
-        if (!isAnimating) {
-          let maxVisibility = 0;
-          let visibleSectionIndex = currentSectionIndex;
+            // If we're in a locked state, ignore clicks
+            if (isScrolling || isScrollLocked) return
 
-          sections.forEach((section, index) => {
-            const rect = section.getBoundingClientRect();
-            const viewHeight = Math.min(window.innerHeight, rect.height);
-            const visibleHeight = Math.min(rect.bottom, viewHeight) - Math.max(rect.top, 0);
-            const visibility = visibleHeight / viewHeight;
+            const targetSection = index - 1
 
-            if (visibility > maxVisibility) {
-              maxVisibility = visibility;
-              visibleSectionIndex = index;
+            // Only move one section at a time for sequential navigation
+            if (targetSection !== currentSectionIndex) {
+              const direction = targetSection > currentSectionIndex ? 1 : -1
+              handleScroll(direction)
             }
-          });
-
-          if (visibleSectionIndex !== currentSectionIndex) {
-            currentSectionIndex = visibleSectionIndex;
-            updateActiveStates(currentSectionIndex);
-          }
+          })
         }
-      });
+      })
 
-      initializeActiveStates();
-    });
+      // Initialize
+      disableNativeScroll()
+      initializeActiveStates()
+
+      // Add CSS to ensure sections take up full viewport
+      sections.forEach(section => {
+        section.style.height = '100vh'
+        section.style.scrollSnapAlign = 'start'
+      })
+
+      // Set up container for scroll snapping
+      if (sectionContainer) {
+        sectionContainer.style.scrollSnapType = 'y mandatory'
+        sectionContainer.style.overflowY = 'scroll'
+        sectionContainer.style.height = '100vh'
+      }
+    })
   </script>
-
-
 
 
 

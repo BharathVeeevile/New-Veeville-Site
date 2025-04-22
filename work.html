@@ -89,13 +89,15 @@
 
     <section class="tab-filter-section">
         <div class="tab-buttons">
-            <button class="tab-button active" data-tab="All">All Projects</button>
-            <button class="tab-button" data-tab="Visual Identity">Brand Identity</button>
-            <button class="tab-button" data-tab="Naming & Storytelling">Environment Graphics</button>
-            <button class="tab-button" data-tab="Packaging">Book Design</button>
-            <button class="tab-button" data-tab="Digital">Event Design</button>
-            <button class="tab-button" data-tab="CGI & Motion">Campaigns</button>
-            <button class="tab-button" data-tab="Sustainability">Film & Motion Graphics</button>
+            <button class="tab-button active" data-tab="All" id="All-projects">All Projects</button>
+            <button class="tab-button" data-tab="Visual Identity" id="Brand-identity">Brand Identity</button>
+            <button class="tab-button" data-tab="Naming & Storytelling" id="Environmental-graphic">Environment
+                Graphics</button>
+            <button class="tab-button" data-tab="Packaging" id="Book-design">Book Design</button>
+            <button class="tab-button" data-tab="Digital" id="Event-design">Event Design</button>
+            <button class="tab-button" data-tab="CGI & Motion" id="Campaigns">Campaigns</button>
+            <button class="tab-button" data-tab="Sustainability" id="Film-Motion-Graphocs">Film & Motion
+                Graphics</button>
         </div>
     </section>
 
@@ -257,7 +259,7 @@
                         <div class="overlay">
                             <h3>Title 2</h3>
                             <p>Short description line.</p>
-                    </div>
+                        </div>
                     </a>
                 </div>
             </div>
@@ -300,12 +302,12 @@
             <div class="col">
                 <div class="img-container">
                     <a href="Projects/project10.html">
-                            <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/Wrbsite-07.png"
-                                alt="Image 1">
-                            <div class="overlay">
-                                <h3>Title 1</h3>
-                                <p>Short description line.</p>
-                            </div>
+                        <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/Wrbsite-07.png"
+                            alt="Image 1">
+                        <div class="overlay">
+                            <h3>Title 1</h3>
+                            <p>Short description line.</p>
+                        </div>
                     </a>
                 </div>
             </div>
@@ -341,12 +343,12 @@
             <div class="col">
                 <div class="img-container">
                     <a href="Projects/project11.html">
-                            <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/Haller-11.png"
-                                alt="Image 2">
-                            <div class="overlay">
-                                <h3>Title 2</h3>
-                                <p>Short description line.</p>
-                            </div>
+                        <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/Haller-11.png"
+                            alt="Image 2">
+                        <div class="overlay">
+                            <h3>Title 2</h3>
+                            <p>Short description line.</p>
+                        </div>
                     </a>
                 </div>
             </div>
@@ -1072,32 +1074,32 @@
         <div class="carousel-wrapper">
             <div class="carousel-track" id="carousel-track">
                 <div class="carousel-card">
-                    <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/05/Screenshot-2024-05-28-at-16.08.34.png"
-                        alt="Project 1" />
-                    <h3>Kahlua</h3>
+                    <img src="../Images/Akamai/Thumbnail-Akamai.webp" alt="Project 1" />
+                    <h3>Akamai</h3>
                     <p>Fusing personality and authenticity</p>
                 </div>
                 <div class="carousel-card">
-                    <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/05/PIC.jpg"
-                        alt="Project 2" />
-                    <h3>SodaStream</h3>
+                    <img src="../Images/BSF/BSF-Banner.webp" alt="Project 2" />
+                    <h3>BSF</h3>
                     <p>Reasserting leadership and expertise</p>
                 </div>
                 <div class="carousel-card">
-                    <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2024/05/IMG_0673-scaled.jpg"
-                        alt="Project 3" />
-                    <h3>Sipsmith</h3>
+                    <img src="../Images/DRL/DRL-Thumbnail.webp" alt="Project 3" />
+                    <h3>DRL Report</h3>
                     <p>Treasuring story and symbolism</p>
                 </div>
                 <div class="carousel-card">
-                    <img src="https://pearlfisher.wpenginepowered.com/wp-content/uploads/2023/11/Article.jpg"
-                        alt="Project 4" />
-                    <h3>Lucozade</h3>
+                    <img src="../Images/KDEM/KDEM-thumbanail.webp" alt="Project 4" />
+                    <h3>KDEM Project</h3>
                     <p>Revitalizing energy with design</p>
                 </div>
             </div>
         </div>
     </section>
+
+   
+
+
 
     <section class="footer-section">
         <div class="columns-row">
@@ -1312,25 +1314,33 @@
                     });
                 }
 
-                // Update active tab button
+                // Update active tab button using both data-tab and id match
                 tabButtons.forEach(btn => {
-                    btn.classList.toggle('active', btn.getAttribute('data-tab') === tabName);
+                    const isActive = btn.getAttribute('data-tab') === tabName || btn.id === tabName;
+                    btn.classList.toggle('active', isActive);
                 });
             }
 
-            // Attach event listeners
+            function findTabNameFromHash() {
+                const hash = window.location.hash.replace('#', '');
+                const targetBtn = Array.from(tabButtons).find(btn => btn.id === hash);
+                return targetBtn ? targetBtn.getAttribute('data-tab') : 'All';
+            }
+
+            // Attach event listeners to tab buttons
             tabButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const tabName = btn.getAttribute('data-tab');
                     showSections(tabName);
+                    history.replaceState(null, null, `#${btn.id}`); // Update URL hash
                 });
             });
 
-            // Initial state
-            showSections('All');
+            // Initial state — check URL hash
+            const initialTab = findTabNameFromHash();
+            showSections(initialTab);
         }
 
-        // Call it once DOM is ready
         document.addEventListener('DOMContentLoaded', initTabFilterSystem);
 
     </script>

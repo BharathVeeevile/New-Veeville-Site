@@ -80,7 +80,12 @@ body {
         display: block;
     }
 
-     
+    .hamburger .close-style {
+        background-color: #000;
+        padding: 2px 15px;
+        border-radius: 25px;
+    }
+
     .hamburger.close-style i {
       color: #ffffff;
       font-size: 20px;
@@ -119,7 +124,14 @@ body {
       color: #ffffff;
       font-weight: 500;
       transition: color 0.3s ease;
-  }}
+  }
+    .nav-links li a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+      transition: color 0.3s ease;
+  }
+}
 
 /* search bar */
 /* Search container inside nav */
@@ -212,32 +224,49 @@ body {
 
 
 
-/* Banner section */
 
 
-/* Reset + general layout */
-
-  
-  .byoma-banner {
+.banner {
+    position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    position: relative;
-  }
-  
-  .byoma-banner__video {
+}
+
+.banner-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-  }
-  
-  /* Optional: Smooth full screen on smaller devices */
-  @media (max-width: 768px) {
-    .byoma-banner {
-      height: 80vh;
+}
+
+.banner-content {
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    color: white;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.banner-content h1 {
+    font-size: 3rem;
+}
+
+.banner-content p {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .banner-content h1 {
+        font-size: 2rem;
     }
-  }
+
+    .banner-content p {
+        font-size: 1rem;
+    }
+}
+
 
 
 
@@ -250,7 +279,6 @@ body {
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    margin: 30px 0px;
 }
 
 .about-container {
@@ -262,7 +290,7 @@ body {
 
 .about-left {
     width: 50%;
-    padding-right:  30px;
+    padding-right: 30px;
 }
 
 .about-left h2 {
@@ -322,203 +350,6 @@ body {
     }
 }
 
-
-/* 2 column section */
-
-.recollagen-section {
-    display: flex;
-    gap: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0px;
-    flex-wrap: wrap;
-    align-items: stretch;
-    padding: 5px 0px;
-  }
-  
-  .recollagen-left,
-  .recollagen-right {
-    flex: 1 1 48%;
-  }
-  
-  .recollagen-left {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-  
-  .recollagen-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 0px;
-    object-fit: cover;
-  }
-  
-  /* Vertically center text */
-  .recollagen-right {
-    display: flex;
-    align-items: center;
-  }
-  
-  .recollagen-right p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #111;
-    margin: 0;
-  }
-  
-  /* Responsive: Stack on smaller screens */
-  @media (max-width: 768px) {
-    .recollagen-section {
-      flex-direction: column;
-    }
-  
-    .recollagen-left,
-    .recollagen-right {
-      flex: 1 1 100%;
-    }
-  
-    .recollagen-right {
-      align-items: flex-start;
-      padding-top: 1rem;
-    }
-  
-    .recollagen-right p {
-      font-size: 1rem;
-    }
-  }
-
-
-
-    /* Pack info */
-
-    .pack-experience {
-      display: flex;
-      flex-wrap: nowrap;
-      align-items: stretch;
-      justify-content: center;
-      gap: 10px;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 5px 0px;
-    }
-    
-    .pack-experience__column {
-      flex: 1 1 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    
-    .pack-experience__text p {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      color: #111;
-      margin: 0;
-    }
-    
-    .pack-experience__video video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      border-radius: 0px;
-      background-color: #000;
-    }
-    
-    /* Fully responsive behavior */
-    @media (max-width: 1024px) {
-      .pack-experience {
-        flex-direction: column;
-      }
-    
-      .pack-experience__column {
-        flex: 1 1 100%;
-      }
-    
-      .pack-experience__text p {
-        font-size: 1rem;
-        text-align: left;
-      }
-    
-      .pack-experience__video video {
-        height: auto;
-        max-height: 500px;
-      }
-    }
-  
-
-    /* video section */
-
-.kotex-pack {
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  background-color: #000; /* fallback background */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 1400px;
-  margin: 0 auto;
-  margin-bottom: 10px;
-}
-
-.kotex-pack__video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border: none;
-}
-
-/* Responsive tweak (optional) */
-@media (max-width: 768px) {
-  .kotex-pack {
-    height: auto;
-  }
-
-  .kotex-pack__video {
-    height: auto;
-  }
-}
-
-
-/* video section */
-
-.kotex-pack {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background-color: #000; /* fallback background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 1400px;
-    margin: 0 auto;
-    margin-bottom: 5px;
-    margin-top: 5px;
-  }
-  
-  .kotex-pack__video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border: none;
-  }
-  
-  /* Responsive tweak (optional) */
-  @media (max-width: 768px) {
-    .kotex-pack {
-      height: auto;
-    }
-  
-    .kotex-pack__video {
-      height: auto;
-    }
-  }
-
 /* Images-wrapeer */
 
 
@@ -536,7 +367,7 @@ body {
 .image-wrapper {
     max-width: 1400px;
     width: 100%;
-    padding: 5px 0px ;
+    padding: 5px;
 }
 
 .banner-img {
@@ -632,16 +463,6 @@ body {
     line-height: 36px;
     padding: 40px;
   }
-
-  @media (max-width:1024px){
-    .project-datas__text p {
-        margin-bottom: 1.5rem;
-        font-size: 24px;
-        color: #333;
-        line-height: 36px;
-        padding: 10px;
-      }
-  }
   
   /* Responsive layout for tablets and mobile */
   @media (max-width: 768px) {
@@ -657,7 +478,6 @@ body {
     .project-datas__text p {
       font-size: 1rem;
       text-align: left;
-      padding: 10px;
     }
   }
 
@@ -725,7 +545,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    padding: 5px 0px;
+    padding: 5px;
     max-width: 1400px;
     margin: 0 auto;
     
@@ -769,7 +589,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    padding: 5px 0px;
+    padding: 5px;
     max-width: 1400px;
     margin: 0 auto;
   }
@@ -832,7 +652,7 @@ body {
   font-size: 1.8rem;
   margin-bottom: 1rem;
   color: #111;
-  padding: 0px 40px;
+  padding: 40px;
 }
 
 .project-feature__text p {
@@ -840,7 +660,7 @@ body {
   color: #333;
   margin-bottom: 1rem;
   line-height: 1.6;
-  padding: 0px 40px;
+  padding: 40px;
 }
 
 /* Responsive styles */
@@ -856,55 +676,12 @@ body {
 
   .project-feature__text h2 {
     font-size: 1.5rem;
-    padding: 10px;
   }
 
   .project-feature__text p {
     font-size: 1rem;
-    padding: 10px;
   }
 }
-
-
-  /* project video */
-
-  .kotex-grid-video {
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-  }
-  
-  .kotex-grid-video__container {
-    width: 100%;
-    max-width: 1400px;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    border-radius: 0px;
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .kotex-grid-video__video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border: none;
-    border-radius: 0px;
-  }
-  
-  /* Optional tweaks for smaller devices */
-  @media (max-width: 768px) {
-    .kotex-grid-video__container {
-      aspect-ratio: 4 / 3;
-      border-radius: 8px;
-    }
-  }
-  
 
 
 /* project media */
@@ -914,7 +691,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 5px 0px;
+    padding: 5px;
     gap: 10px;
     max-width: 1400px;
     margin: 0 auto;
@@ -951,9 +728,10 @@ body {
 
   .project-cards-carousel {
     width: 100%;
-    background: #fff;
+    background-color: rgba(245, 245, 245, 0.4);
     padding: 2rem 0;
     overflow: hidden;
+    margin-top: 10px;
   }
   
   .section-title {
@@ -1013,7 +791,6 @@ body {
       flex: 0 0 33.3333%;
     }
   }
-  
   
   
 
