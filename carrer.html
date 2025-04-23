@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Fullscreen Slideshow</title>
+    <link rel="stylesheet" href="carrer.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link rel="icon" href="../Images/Home Page Thumbnails/Logoimage.png" type="image/x-icon" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="../Images/Work Page Thumbnails/Logo Image.webp" alt="Veeville Logo" class="logo-image" />
+            </a>
+        </div>
+
+        <div class="hamburger">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="work.html">WORK</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+
+            <!-- ADD THIS HERE -->
+            <li>
+                <div class="search-container">
+                    <div class="search-icon" onclick="toggleSearch()">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+
+                    </div>
+                    <div id="search-overlay">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+
+                            <input type="text" placeholder="Ask Bob Anything" class="search-input" />
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <!-- END -->
+        </ul>
+    </nav>
+
+
+    <section class="fullscreen-banner">
+        <div class="slideshow">
+            <img src="https://images.teamtailor-cdn.com/images/s3/teamtailor-production/hero_picture_small-v6/image_uploads/0f865b1d-2df2-4a45-a3a7-24a712ab6307/original.jpeg"
+                class="slide active" alt="Banner 1">
+            <img src="../Images/Home Page Thumbnails/Revolutionari Campaign Thumbnail-Home Page.png" class="slide"
+                alt="Banner 2">
+            <img src="../Images/Home Page Thumbnails/Benefits Campaign Thumbnail-Home Page.png" class="slide"
+                alt="Banner 3">
+            <img src="../Images/Home Page Thumbnails/Kyoorius Thumbnail-Home Page.png" class="slide" alt="Banner 4">
+
+            <!-- <div class="center-button">
+                <button>Connect</button>
+            </div> -->
+            <!-- <div class="scroll-icon">&#x25BC;</div> -->
+        </div>
+    </section>
+
+    <section class="studios-culture-section">
+        <div class="text-column">
+            <h2>Studios &amp; Culture</h2>
+            <p>
+                We are based in 2 cities renowned for design excellence – London and New York.
+                Both studios are unique but our unrivaled culture ties us together. So whether you're
+                enjoying rooftop gigs in New York, exhibitions at our studio in London or one of our
+                trips all together, we are certain you'll fall in love with life at Pearlfisher.
+            </p>
+        </div>
+        <div class="carousel-column">
+            <div class="carousel">
+                <img src="https://images.teamtailor-cdn.com/images/s3/teamtailor-production/gallery_picture-v6/image_uploads/01d0af2d-b638-4cea-b7ea-cb26d85e5431/original.jpeg"
+                    class="carousel-image active" alt="Culture 1">
+                <img src="https://images.teamtailor-cdn.com/images/s3/teamtailor-production/gallery_picture-v6/image_uploads/128b84d9-814b-4e9f-96d5-94edded99a2b/original.jpeg"
+                    class="carousel-image" alt="Culture 2">
+                <img src="https://images.teamtailor-cdn.com/images/s3/teamtailor-production/gallery_picture-v6/image_uploads/b00480f7-82c1-4751-a505-4bb781010754/original.jpeg"
+                    class="carousel-image" alt="Culture 3">
+                <img src="https://images.teamtailor-cdn.com/images/s3/teamtailor-production/gallery_picture-v6/image_uploads/b00480f7-82c1-4751-a505-4bb781010754/original.jpeg"
+                    class="carousel-image" alt="Culture 4">
+                <div class="dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="careers">
+        <div class="careers-header">
+            <h2>Careers</h2>
+            <p>At Veeville, we celebrate successes together by promoting a culture of gratitude, encouraging teamwork,
+                and collaboration. We offer opportunities for professional development, support a healthy work-life
+                balance, and foster
+                diversity. If you are someone who appreciates a vibrant environment, then join us!</p>
+        </div>
+
+        <div class="job-listings">
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Client Servicing</h3>
+                    <p>You will be responsible for identifying new business opportunities, maintaining a relationship
+                        with clients, and having the ability to work with team members across departments.</p>
+                </div>
+                <button class="apply-button">Apply</button>
+            </div>
+
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Video Editor</h3>
+                    <p>You should have a passion for storytelling, a creative eye, and excellent technical skills. You
+                        are responsible for assembling raw footage into a finished product that meets the creative and
+                        technical requirements of the client.</p>
+                </div>
+                <button class="apply-button">Apply</button>
+            </div>
+
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Graphic Designer</h3>
+                    <p>You are responsible for creating and developing visual content that communicates the client's
+                        brand and message. You should have a strong understanding of design principles and be able to
+                        use a variety of software
+                        applications to create high-quality work.</p>
+                </div>
+                <button class="apply-button">Apply</button>
+            </div>
+
+            <div class="job-card">
+                <div class="job-info">
+                    <h3>Copywriter</h3>
+                    <p>You are responsible for writing clear, concise, and persuasive copy for a variety of marketing
+                        materials. You must have a strong understanding of the target audience and be able to write copy
+                        that resonates with them.
+                    </p>
+                </div>
+                <button class="apply-button">Apply</button>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="about-pearlfisher">
+        <div class="about-pearlfisher__content">
+          <h2 class="about-pearlfisher__title">About Veeville</h2>
+          <p class="about-pearlfisher__text">
+            Veeville is an independent multidisciplinary design studio based in Bengaluru.
+            We are built to drive desire and create value for the world’s most influential brands.
+          </p>
+          <p class="about-pearlfisher__text">
+            Blending deep strategic thinking with groundbreaking creativity, we don't just elevate brands—we create the magnetic, irresistible quality that compels consumers to say:
+          </p>
+          <p class="about-pearlfisher__quote">I want that.</p>
+      
+          <div class="about-pearlfisher__stats">
+            <div class="about-pearlfisher__stat">
+              <strong>Founded in</strong> 2009
+            </div>
+            <div class="about-pearlfisher__stat">
+              <strong>Co-workers</strong> 100
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      
+      <section class="footer-section">
+        <div class="columns-row">
+            <div class="column">
+                <h3>Contact</h3>
+                <p>Let's chat.</p>
+            </div>
+
+            <div class="column">
+                <h3>Newsletter</h3>
+                <p>Subscribe.</p>
+            </div>
+
+            <div class="column">
+                <h3>Join us</h3>
+                <p>Careers.</p>
+            </div>
+
+            <div class="spacer-column"></div>
+        </div>
+
+        <div class="info-row">
+            <div class="locations">
+                <span>Bengaluru.</span>
+                <span></span>
+            </div>
+
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                © Veeville 2009 - 2025
+                <a href="#">Privacy Policy</a>
+                <a href="#">Sitemap</a>
+            </p>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+
+    </section>
+
+
+      
+
+ <!-- Navbar -->
+
+
+ <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        highlightActivePage();
+        setupHamburgerMenu();
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        setupStickyNavbar();
+    });
+
+    function setupStickyNavbar() {
+        const navbar = document.querySelector('.navbar');
+        const navLinks = document.querySelectorAll('.nav-links li a');
+        const hamburgerIcon = document.querySelector('.hamburger i');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { // Threshold can be adjusted
+                navbar.classList.add('sticky');
+                navLinks.forEach(link => link.classList.add('sticky-link'));
+                hamburgerIcon.classList.add('sticky-icon');
+            } else {
+                navbar.classList.remove('sticky');
+                navLinks.forEach(link => link.classList.remove('sticky-link'));
+                hamburgerIcon.classList.remove('sticky-icon');
+            }
+        });
+    }
+
+
+
+    function highlightActivePage() {
+        const currentPath = window.location.pathname.split("/").pop();
+        const menuItems = document.querySelectorAll('.nav-links li a');
+
+        menuItems.forEach(item => {
+            if (item.getAttribute('href') === currentPath) {
+                item.classList.add("active");
+            }
+        });
+    }
+
+    function setupHamburgerMenu() {
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const hamburgerIcon = document.querySelector('.hamburger i');
+
+        hamburger.addEventListener("click", () => {
+            toggleMenu(navLinks, hamburgerIcon, hamburger);
+        });
+    }
+
+    function toggleMenu(navLinks, hamburgerIcon, hamburger) {
+        navLinks.classList.toggle("active");
+
+        if (navLinks.classList.contains("active")) {
+            hamburgerIcon.classList.remove("fa-bars");
+            hamburgerIcon.classList.add("fa-xmark");
+            hamburger.classList.add("close-style");  // add custom style
+        } else {
+            hamburgerIcon.classList.remove("fa-xmark");
+            hamburgerIcon.classList.add("fa-bars");
+            hamburger.classList.remove("close-style");  // remove custom style
+        }
+    }
+
+</script>
+
+
+
+    <!-- 1st section -->
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let current = 0;
+
+        function showNextSlide() {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }
+
+        setInterval(showNextSlide, 5000);
+
+    </script>
+
+    <!--second section -->
+    <script>
+        const images = document.querySelectorAll('.carousel-image');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            images.forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+                dots[i].classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showSlide(currentIndex);
+        }
+
+        setInterval(nextSlide, 3000); // autoplay every 4 seconds
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                showSlide(currentIndex);
+            });
+        });
+
+    </script>
+
+  <!-- jobListings -->
+        
+    <script>
+        function initCareerJobListings() {
+            document.addEventListener("DOMContentLoaded", () => {
+                const jobListings = [
+                    {
+                        title: "Software Engineer",
+                        location: "Bangalore, India",
+                        department: "Engineering",
+                        shortDescription: "Work on cutting-edge technology and scalable applications.",
+                        fullDescription: "As a Software Engineer at Veeville, you'll work with a talented team to develop and maintain innovative solutions. We use the latest technologies to build scalable applications that make a real impact.",
+                        applyLink: "#"
+                    },
+                    {
+                        title: "Marketing Manager",
+                        location: "Remote",
+                        department: "Marketing",
+                        shortDescription: "Lead digital campaigns and brand strategy.",
+                        fullDescription: "We are looking for a dynamic Marketing Manager to lead digital campaigns and enhance brand presence across multiple platforms.",
+                        applyLink: "#"
+                    },
+                    {
+                        title: "Sales Executive",
+                        location: "New York, USA",
+                        department: "Sales",
+                        shortDescription: "Drive revenue growth and customer relationships.",
+                        fullDescription: "Join our sales team and help expand our market presence by fostering strong relationships with clients and driving sales.",
+                        applyLink: "#"
+                    }
+                ];
+
+                const jobContainer = document.getElementById("jobListings");
+
+                function renderJobs() {
+                    jobContainer.innerHTML = "";
+                    jobListings.forEach((job, index) => {
+                        const jobCard = document.createElement("div");
+                        jobCard.classList.add("job-card");
+                        jobCard.innerHTML = `
+                    <h3>${job.title}</h3>
+                    <p><strong>📍 ${job.location}</strong></p>
+                    <p>${job.shortDescription}</p>
+                    <span class="toggle-description" data-index="${index}">🔽 View More</span>
+                    <p class="job-description">${job.fullDescription}</p>
+                    <a href="${job.applyLink}" class="apply-button">Apply Now</a>
+                `;
+                        jobContainer.appendChild(jobCard);
+                    });
+
+                    document.querySelectorAll(".toggle-description").forEach((toggle) => {
+                        toggle.addEventListener("click", function () {
+                            const index = this.getAttribute("data-index");
+                            const description = document.querySelectorAll(".job-description")[index];
+                            description.style.display = description.style.display === "block" ? "none" : "block";
+                        });
+                    });
+                }
+
+                renderJobs();
+
+                document.getElementById("toggleView").addEventListener("click", () => {
+                    jobContainer.classList.toggle("list-view");
+                    jobContainer.classList.toggle("grid-view");
+                });
+            });
+        }
+
+        initCareerJobListings();
+
+    </script>
+</body>
+
+</html>

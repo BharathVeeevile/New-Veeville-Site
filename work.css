@@ -616,11 +616,17 @@ body {
       margin-bottom: 0.5rem;
     }
   
-    .social-icons {
+      .social-icons {
       margin-top: 15px;
       display: flex;
       justify-content: center;
     }
+
+    .footer-bottom a {
+        color: inherit;
+        text-decoration: none;
+        margin-left: 0px;
+      }
   }
 
 

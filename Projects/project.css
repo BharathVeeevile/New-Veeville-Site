@@ -343,7 +343,7 @@ body {
 
     .about-right p {
         font-size: 14px;
-        line-height: 32px;
+        line-height: 28px;
     }
 }
 
@@ -377,7 +377,7 @@ body {
 /* Responsive tweaks */
 @media (max-width: 768px) {
     .image-banner {
-        padding: 1.5rem 0.5rem;
+        padding: 0px 10px;
     }
 
     .image-wrapper {
@@ -729,10 +729,16 @@ body {
     }
 
   .social-icons {
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-  }
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .footer-bottom a {
+        color: inherit;
+        text-decoration: none;
+        margin-left: 0px;
+      }
 }
 
 

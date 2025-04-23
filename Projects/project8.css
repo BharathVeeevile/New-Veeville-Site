@@ -1112,10 +1112,16 @@ body {
     }
 
   .social-icons {
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-  }
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .footer-bottom a {
+        color: inherit;
+        text-decoration: none;
+        margin-left: 0px;
+      }
 }
 /* sticky bar*/
 
