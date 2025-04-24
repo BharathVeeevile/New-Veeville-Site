@@ -77,20 +77,21 @@
         </ul>
     </nav>
 
+    <section class="video-section" id="videoSection">
+        <div class="video-wrapper">
+            <iframe
+                src="https://player.vimeo.com/video/973054554?h=9a632b8ace&autoplay=1&loop=1&muted=1&playsinline=1&autopause=0&background=1"
+                frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
+            </iframe>
+        </div>
+    </section>
 
 
 
-    <section class="video-section">
-        <iframe
-          class="responsive-video"
-          src="https://player.vimeo.com/video/973054554?autoplay=1&loop=1&muted=1&playsinline=1&autopause=0&background=1"
-          frameborder="0"
-          allow="autoplay; fullscreen"
-          allowfullscreen>
-        </iframe>
-      </section>
-      
-      
+
+
+
+
 
 
     <section class="tab-filter-section">
@@ -1103,7 +1104,7 @@
         </div>
     </section>
 
-   
+
 
 
 
@@ -1121,7 +1122,7 @@
 
             <div class="column">
                 <h3>Join us</h3>
-               <a href="carrer.html" class="footer-carrer">
+                <a href="carrer.html" class="footer-carrer">
                     <p>Careers.</p>
                 </a>
             </div>
@@ -1154,8 +1155,6 @@
         </div>
 
     </section>
-
-
 
 
 
@@ -1232,6 +1231,32 @@
         }
 
     </script>
+
+
+    <!-- video -->
+    <script>
+        function setFullHeight() {
+            const isMobile = window.innerWidth <= 480;
+            const vh = window.innerHeight * 0.01;
+            const fullHeight = vh * 100;
+
+            const section = document.getElementById('videoSection');
+            if (isMobile) {
+                // Ensure at least 250px height on mobile
+                section.style.height = Math.max(fullHeight, 250) + 'px';
+            } else {
+                // Use actual height on tablets/desktops
+                section.style.height = fullHeight + 'px';
+            }
+        }
+
+        window.addEventListener('resize', setFullHeight);
+        window.addEventListener('load', setFullHeight);
+    </script>
+
+
+
+
 
 
 
@@ -1485,6 +1510,30 @@
 
     </script>
 
+
+
+    <!-- search bar -->
+
+
+
+    <script>
+        function toggleSearch() {
+            const overlay = document.getElementById("search-overlay");
+            const inputField = overlay.querySelector("input");
+
+            inputField.value = ''; // reset input every time
+            overlay.style.display = "flex";
+            inputField.focus();
+
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) {
+                    overlay.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+    
 </body>
 
 </html>
