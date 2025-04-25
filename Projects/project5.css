@@ -344,36 +344,56 @@ body {
 /* video section */
 
 .kotex-pack {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background-color: #000; /* fallback background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 1400px;
-    margin: 0 auto;
-    margin-bottom: 10px;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.kotex-pack__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .kotex-pack {
+      height: auto;
   }
-  
+
   .kotex-pack__video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border: none;
-  }
-  
-  /* Responsive tweak (optional) */
-  @media (max-width: 768px) {
-    .kotex-pack {
       height: auto;
-    }
-  
-    .kotex-pack__video {
-      height: auto;
-    }
   }
+}
+
+/* RESPONSIVE TWEAKS */
+@media (max-width: 768px) {
+  .kotex-pack {
+    padding: 0 4vw;
+  }
+
+  .kotex-pack__container {
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .kotex-pack {
+    padding: 0 2vw;
+  }
+
+  .kotex-pack__container {
+    border-radius: 8px;
+  }
+}
 
 
   /* Pack info */
