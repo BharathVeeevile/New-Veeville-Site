@@ -214,30 +214,50 @@ body {
 
 /* Banner section */
 
+.byoma-banner {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-/* Reset + general layout */
+/* Default: Fully responsive 16:9 ratio */
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Default 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+}
 
-  
-  .byoma-banner {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Laptop/Desktop: Fix height to 600px */
+@media (min-width: 1024px) {
+  .video-container {
+    padding-bottom: 0; /* Remove 16:9 padding */
+    height: 600px; /* Fixed height */
   }
-  
-  .byoma-banner__video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  
+}
+
+
+
   /* Optional: Smooth full screen on smaller devices */
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     .byoma-banner {
       height: 80vh;
     }
-  }
+  } */
 
 
 
@@ -289,37 +309,48 @@ body {
 
 /* Responsive adjustments */
 @media (max-width: 900px) {
-    .about-container {
-        flex-direction: column;
-        text-align: left;
+  .about-section{
+      padding: 0px 20px !important;
+      margin: 0px;
     }
+    
+  .about-container {
+      flex-direction: column;
+      text-align: left;
+  }
 
-    .about-left,
-    .about-right {
-        width: 100%;
-        padding: 10px 0;
-    }
+  .about-left,
+  .about-right {
+      width: 100%;
+      padding: 10px 0;
+      display: flex;
+      justify-content: center;
+  }
 
-    .about-left h2 {
-        font-size: 1.8rem;
-        text-align: center;
-    }
+  .about-left h2 {
+      font-size: 1.8rem;
+      text-align: center;
+   
+  }
 
-    .about-right p {
-        font-size: 1rem;
-        text-align: center !important;
-        padding-left: 0px;
-    }
+  .about-right p {
+      font-size: 1rem;
+      text-align: center !important;
+      padding-left: 0px;
+      line-height: 32px;
+  }
 }
 
 @media (max-width: 600px) {
-    .about-left h2 {
-        font-size: 1.5rem;
-    }
+  .about-left h2 {
+      font-size: 1.5rem;
+      line-height: 40px;
+  }
 
-    .about-right p {
-        font-size: 0.9rem;
-    }
+  .about-right p {
+      font-size: 0.9rem;
+      line-height: 32px;
+  }
 }
 
 
