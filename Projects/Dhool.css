@@ -332,15 +332,14 @@ body {
       justify-content: center;
   }
 
-  .about-left h2 {
+   .about-left h2 {
       font-size: 1.8rem;
-      text-align: center;
-   
+      text-align: left;
   }
 
   .about-right p {
       font-size: 1rem;
-      text-align: center !important;
+      text-align: center;
       padding-left: 0px;
       line-height: 32px;
   }
@@ -350,11 +349,13 @@ body {
   .about-left h2 {
       font-size: 1.5rem;
       line-height: 40px;
+      text-align: left;
   }
 
   .about-right p {
       font-size: 0.9rem;
       line-height: 32px;
+      text-align: left;
   }
 }
 
@@ -396,7 +397,7 @@ body {
     }
 
     .last-middle{
-      padding: 5px 126px !important;
+      padding: 5px 16px !important;
     }
 }
 
@@ -545,7 +546,18 @@ body {
   }
   
   /* Responsive layout for tablets and mobile */
-  @media (max-width: 768px) {
+  @media(min-width:768px) and (max-width:1024px){
+    .project-intro__text p {
+      font-size: 16px;
+      color: #333;
+      line-height: 24px;
+      padding: 0px;
+  }
+  .project-intro{
+    padding: 5px 20px;
+  }
+  }
+  @media (max-width: 767px) {
     .project-intro {
       flex-direction: column;
       padding: 0rem 1rem;
@@ -558,8 +570,11 @@ body {
     .project-intro__text p {
       font-size: 1rem;
       text-align: left;
+      padding: 5px 10px;
     }
   }
+
+
 
 
   /* Project Videos */
@@ -1003,7 +1018,15 @@ body {
   }
   
   /* Responsive: Stack on smaller screens */
-  @media (max-width: 768px) {
+  @media(min-width:768px) and (max-width:1024px){
+    .recollagen-right{
+      padding-top: 0px;
+    }
+    .recollagen-section{
+      padding: 5px 16px;
+    }
+  }
+  @media (max-width: 767px) {
     .recollagen-section {
       flex-direction: column;
       padding: 0px 16px;
@@ -1016,7 +1039,7 @@ body {
   
     .recollagen-right {
       align-items: flex-start;
-      padding-top: 1rem;
+      padding-top: 0px;
     }
   
     .recollagen-right p {
@@ -1092,7 +1115,7 @@ body {
 
 
 .footer-section {
-    max-width: 1530px;
+   width: 100%;
     margin: 0 auto;
     padding: 40px 40px;
     font-family: 'Manrope', sans-serif;

@@ -480,9 +480,10 @@ body {
   }
 
   .project-datas__text p {
-    font-size: 1rem;
-    text-align: left;
-  }
+      font-size: 1rem;
+      text-align: left;
+      padding: 0px 10px;
+    }
 }
 
 
@@ -522,6 +523,17 @@ body {
   }
   
   /* Responsive layout for tablets and mobile */
+  @media(min-width:769px) and (max-width:1024px){
+    .project-intro__text p {
+      font-size: 16px;
+      color: #333;
+      line-height: 24px;
+      padding: 0px;
+  }
+  .project-intro{
+    padding: 5px 20px;
+  }
+  }
   @media (max-width: 768px) {
     .project-intro {
       flex-direction: column;
@@ -535,8 +547,11 @@ body {
     .project-intro__text p {
       font-size: 1rem;
       text-align: left;
+      padding: 5px 10px;
     }
   }
+
+
   
   
 
@@ -609,7 +624,7 @@ body {
 
 
 .footer-section {
-    max-width: 1530px;
+   width: 100%;
     margin: 0 auto;
     padding: 40px 40px;
     font-family: 'Manrope', sans-serif;

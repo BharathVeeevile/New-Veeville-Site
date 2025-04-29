@@ -76,7 +76,7 @@ body {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .hamburger {
       display: block;
   }
@@ -210,11 +210,115 @@ body {
   }
   
   /* Responsive */
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .search-box {
       width: 90%;
     }
   }
+
+
+
+  /* Top Carousel */
+
+.design-carousel {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Manrope', sans-serif;
+}
+
+.design-carousel .dc-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.design-carousel .dc-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.design-carousel .dc-text {
+  position: absolute;
+  bottom: 100px;
+  left: 80px;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.design-carousel .dc-text span {
+  display: block;
+  font-weight: normal;
+  font-size: 2.5rem;
+}
+
+.design-carousel .dc-dots {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+}
+
+.design-carousel .dc-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.4;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.design-carousel .dc-dot.active {
+  opacity: 1;
+}
+
+@media (max-width: 1024px) {
+  .design-carousel .dc-text {
+    bottom: 60px;
+    left: 30px;
+    font-size: 2rem;
+  }
+
+  .design-carousel .dc-text span {
+    font-size: 1.3rem;
+  }
+
+  .design-carousel .dc-dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .design-carousel .dc-text {
+    bottom: 40px;
+    left: 20px;
+    font-size: 1.5rem;
+  }
+
+  .design-carousel .dc-text span {
+    font-size: 1.1rem;
+  }
+
+  .design-carousel .dc-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
 
 
 
@@ -255,7 +359,7 @@ body {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .video-section {
       height: 250px !important;
   }
@@ -327,7 +431,7 @@ body {
   }
   
   /* Responsive tabs */
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .tab-buttons {
       flex-direction: column;
       align-items: center;
@@ -428,7 +532,7 @@ body {
   }
   
   /* Responsive adjustments */
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .row {
       flex-direction: column;
     }
@@ -504,7 +608,7 @@ body {
   }
   
   /* Tablet: 2 cards */
-  @media (min-width: 768px) {
+  @media (min-width: 767px) {
     .carousel-card {
       flex: 0 0 50%;
     }
@@ -617,7 +721,7 @@ body {
   }
   
   /* Responsive Design */
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .columns-row {
       grid-template-columns: 1fr;
       gap: 2rem;
@@ -728,6 +832,7 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 10px;
     transition: transform 0.3s ease;
   }
   
@@ -767,7 +872,7 @@ body {
   }
   
   /* Responsive design */
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .gallery-row {
       flex-direction: column;
     }
@@ -873,7 +978,7 @@ body {
   }
   
   /* Responsive behavior */
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .creative-row {
       flex-direction: column;
     }
@@ -978,7 +1083,7 @@ body {
   }
   
   /* Responsive */
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .inspire-row {
       flex-direction: column;
     }
@@ -1083,7 +1188,7 @@ body {
   }
   
   /* Responsive Design */
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .vision-row {
       flex-direction: column;
     }
@@ -1187,7 +1292,7 @@ body {
   }
   
   /* Responsive design */
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .identity-row {
       flex-direction: column;
     }
@@ -1292,7 +1397,7 @@ body {
   }
   
   /* Responsive Design */
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .essence-row {
       flex-direction: column;
     }
@@ -1396,7 +1501,7 @@ body {
   }
   
   /* Responsive behavior */
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     .canvas-row {
       flex-direction: column;
     }
