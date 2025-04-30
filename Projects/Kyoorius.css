@@ -67,8 +67,9 @@ body {
 }
 
 .nav-links li a.sticky-link {
-    color: #000000;
+  color: #000000;
 }
+
 
 .hamburger i.sticky-icon {
     color: #000000;
@@ -220,6 +221,7 @@ body {
 
 
 
+
 /* Banner section */
 .stamina-banner {
     width: 100%;
@@ -344,7 +346,7 @@ body {
 
     .about-right p {
         font-size: 1rem;
-        text-align: center !important;
+        text-align: center;
         padding-left: 0px;
     }
 }
@@ -471,7 +473,7 @@ body {
 }
 
 .project-datas__text p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0px;
     font-size: 24px;
     color: #333;
     line-height: 36px;
@@ -480,7 +482,7 @@ body {
 
 @media (max-width:1024px) {
     .project-datas__text p {
-        margin-bottom: 1.5rem;
+        margin-bottom: 0px;
         font-size: 24px;
         color: #333;
         line-height: 36px;
@@ -489,23 +491,39 @@ body {
 }
 
 /* Responsive layout for tablets and mobile */
-@media (max-width: 768px) {
+/* Responsive layout for tablets and mobile */
+@media(min-width:768px) and (max-width:1024px) {
+    .project-datas__text p {
+      margin-bottom: 0px;
+      font-size: 16px;
+      color: #333;
+      line-height: 24px;
+      padding: 0px;
+    }
+  
     .project-datas {
-        flex-direction: column;
-        padding: 5px 16px;
+      padding: 5px 20px;
     }
-
+  }
+  
+  
+  
+  @media (max-width: 767px) {
+    .project-datas {
+      flex-direction: column;
+      padding: 0rem 1rem;
+    }
+  
     .project-datas__column {
-        flex: 1 1 100%;
+      flex: 1 1 100%;
     }
-
+  
     .project-datas__text p {
         font-size: 1rem;
         text-align: left;
-        padding: 10px;
-    }
-}
-
+        padding: 0px 10px;
+      }
+  }
 
 
 
@@ -556,7 +574,7 @@ body {
     .project-intro__text p {
         font-size: 1rem;
         text-align: left;
-       padding:0px
+        padding: 0px;
     }
 }
 
@@ -1101,6 +1119,12 @@ body {
 }
 
 /* Responsive Design */
+@media(min-width:769px) and (max-width:1024px){
+  .social-icons {
+    display: flex;
+    gap: 0px;
+}
+}
 @media (max-width: 768px) {
     .columns-row {
         grid-template-columns: 1fr;

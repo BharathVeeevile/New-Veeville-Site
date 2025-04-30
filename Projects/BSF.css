@@ -67,8 +67,9 @@ body {
 }
 
 .nav-links li a.sticky-link {
-    color: #000000;
+  color: #000000;
 }
+
 
 .hamburger i.sticky-icon {
     color: #000000;
@@ -224,6 +225,12 @@ body {
 @media (max-width: 1024px) {
   .stamina-banner {
     height: 500px; /* Standard reduced height on tablets */
+  }
+  .stamina-banner__image {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* IMPORTANT: always cover */
+    object-position: center center; /* Center the important part */
   }
 }
 
@@ -484,7 +491,7 @@ body {
   }
   
   .project-datas__text p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0px;
     font-size: 24px;
     color: #333;
     line-height: 36px;
@@ -493,7 +500,7 @@ body {
 
   @media (max-width:1024px){
     .project-datas__text p {
-        margin-bottom: 1.5rem;
+        margin-bottom: 0px;
         font-size: 24px;
         color: #333;
         line-height: 36px;
@@ -1231,6 +1238,12 @@ body {
 }
 
 /* Responsive Design */
+@media(min-width:769px) and (max-width:1024px){
+  .social-icons {
+    display: flex;
+    gap: 0px;
+}
+}
 @media (max-width: 768px) {
     .columns-row {
         grid-template-columns: 1fr;

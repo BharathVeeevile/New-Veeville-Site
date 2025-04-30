@@ -67,8 +67,9 @@ body {
 }
 
 .nav-links li a.sticky-link {
-    color: #000000;
+  color: #000000;
 }
+
 
 .hamburger i.sticky-icon {
     color: #000000;
@@ -706,6 +707,12 @@ body {
 }
 
 /* Responsive Design */
+@media(min-width:769px) and (max-width:1024px){
+  .social-icons {
+    display: flex;
+    gap: 0px;
+}
+}
 @media (max-width: 768px) {
     .columns-row {
         grid-template-columns: 1fr;

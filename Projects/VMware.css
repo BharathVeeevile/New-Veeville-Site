@@ -67,8 +67,9 @@ body {
 }
 
 .nav-links li a.sticky-link {
-    color: #000000;
+  color: #000000;
 }
+
 
 .hamburger i.sticky-icon {
     color: #000000;
@@ -79,6 +80,10 @@ body {
     .hamburger {
         display: block;
     }
+
+    .nav-links li a.sticky-link {
+        color: #ffffff;
+      }
 
     .hamburger .close-style {
         background-color: #000;
@@ -403,9 +408,22 @@ body {
 }
 
 /* Responsive tweaks */
+@media(min-width:768px) and (max-width:1024px){
+  .image-banner{
+    padding: 5px 16px !important;
+  }
+}
 @media (max-width: 768px) {
     .image-banner {
         padding: 5px 10px;
+    }
+
+    .VMWare-imag{
+      padding: 0px 10px;
+    }
+
+    .VMWare-wrappaer{
+      padding: 0px 5px;
     }
 
  
@@ -480,7 +498,7 @@ body {
   }
   
   .project-datas__text p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0px;
     font-size: 24px;
     color: #333;
     line-height: 36px;
@@ -488,34 +506,41 @@ body {
   }
   
   /* Responsive layout for tablets and mobile */
-  @media(min-width:769px) and (max-width:1024px){
+/* Responsive layout for tablets and mobile */
+@media(min-width:768px) and (max-width:1024px) {
   .project-datas__text p {
     margin-bottom: 0px;
     font-size: 16px;
     color: #333;
     line-height: 24px;
     padding: 0px;
-}
-.project-datas{
-  padding: 5px 20px;
-}
+  }
+
+  .project-datas {
+    padding: 5px 20px;
+  }
 }
 
-  @media (max-width: 768px) {
-    .project-datas {
-      flex-direction: column;
-      padding: 0rem 1rem;
-    }
-  
-    .project-datas__column {
-      flex: 1 1 100%;
-    }
-  
-    .project-datas__text p {
+
+
+@media (max-width: 767px) {
+  .project-datas {
+    flex-direction: column;
+    padding: 0rem 1rem;
+    gap:5px;
+  }
+
+  .project-datas__column {
+    flex: 1 1 100%;
+  }
+
+  .project-datas__text p {
       font-size: 1rem;
       text-align: left;
+      padding: 0px 10px;
     }
-  }
+}
+
 
 
 
@@ -554,20 +579,36 @@ body {
     line-height: 36px;
     padding: 40px;
   }
+
+  /* Responsive for mobile and tablet versions*/
   
-  /* Responsive layout for tablets and mobile */
-  @media(min-width:769px) and (max-width:1024px){
+  @media(min-width:768px) and (max-width:1024px) {
     .project-intro__text p {
       font-size: 16px;
       color: #333;
       line-height: 24px;
       padding: 0px;
+    }
+  
+    .project-intro {
+      padding: 5px 20px;
+    }
   }
-  .project-intro{
-    padding: 5px 20px;
+  
+  @media(min-width:768px) and (max-width:1024px) {
+    .project-intro__text p {
+      font-size: 16px;
+      color: #333;
+      line-height: 24px;
+      padding: 0px;
+    }
+  
+    .project-intro {
+      padding: 5px 20px;
+    }
   }
-  }
-  @media (max-width: 768px) {
+  
+  @media (max-width: 767px) {
     .project-intro {
       flex-direction: column;
       padding: 0rem 1rem;
@@ -580,7 +621,7 @@ body {
     .project-intro__text p {
       font-size: 1rem;
       text-align: left;
-      padding: 5px 10px;
+      padding: 0px 10px;
     }
   }
 
@@ -659,12 +700,13 @@ body {
   }
   
   /* Responsive styles */
-@media(min-width:769px) and (max-width:1024px){
-    .project-images{
-      padding: 5px 20px;
+  @media(min-width:768px) and (max-width:1024px) {
+    .project-images {
+      padding: 10px 20px;
     }
   }
-  @media (max-width: 768px) {
+  
+  @media (max-width: 767px) {
     .project-images {
       flex-direction: column;
       padding: 10px 1rem;
@@ -674,6 +716,7 @@ body {
       flex: 1 1 100%;
     }
   }
+  
 
 
 
@@ -1016,6 +1059,12 @@ body {
 }
 
 /* Responsive Design */
+@media(min-width:769px) and (max-width:1024px){
+  .social-icons {
+    display: flex;
+    gap: 0px;
+}
+}
 @media (max-width: 768px) {
     .columns-row {
         grid-template-columns: 1fr;

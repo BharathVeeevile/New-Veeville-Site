@@ -67,7 +67,7 @@ body {
 }
 
 .nav-links li a.sticky-link {
-    color: #000000;
+  color: #000000;
 }
 
 .hamburger i.sticky-icon {
@@ -79,6 +79,10 @@ body {
 @media (max-width: 768px) {
   .hamburger {
       display: block;
+  }
+
+  .nav-links li a.sticky-link {
+    color: #ffffff;
   }
 
    .hamburger .close-style {
@@ -237,6 +241,12 @@ body {
   .stamina-banner {
     height: 500px; /* Standard reduced height on tablets */
   }
+  .stamina-banner__image {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* IMPORTANT: always cover */
+    object-position: center center; /* Center the important part */
+  }
 }
 
 /* Mobile view */
@@ -338,7 +348,7 @@ body {
 
    .about-left h2 {
       font-size: 1.8rem;
-      text-align: left;
+      text-align: center;
   }
 
    .about-right p {
@@ -474,7 +484,7 @@ body {
   }
   
   .project-datas__text p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0px;
     font-size: 18px;
     color: #333;
     line-height: 36px;
@@ -483,7 +493,7 @@ body {
 
   @media (max-width:1024px){
     .project-datas__text p {
-        margin-bottom: 1.5rem;
+        margin-bottom: 0px;
         font-size: 24px;
         color: #333;
         line-height: 36px;
@@ -492,10 +502,27 @@ body {
   }
   
   /* Responsive layout for tablets and mobile */
-  @media (max-width: 768px) {
+  @media(min-width:768px) and (max-width:1024px) {
+    .project-datas__text p {
+      margin-bottom: 0px;
+      font-size: 16px;
+      color: #333;
+      line-height: 24px;
+      padding: 0px;
+    }
+  
+    .project-datas {
+      padding: 5px 20px;
+    }
+  }
+  
+  
+  
+  @media (max-width: 767px) {
     .project-datas {
       flex-direction: column;
-      padding: 0rem 1rem;
+      padding: 5px 1rem;
+      gap: 5px;
     }
   
     .project-datas__column {
@@ -503,10 +530,10 @@ body {
     }
   
     .project-datas__text p {
-      font-size: 1rem;
-      text-align: left;
-      padding: 10px;
-    }
+        font-size: 1rem;
+        text-align: left;
+        padding: 0px 10px;
+      }
   }
 
 
@@ -546,23 +573,49 @@ body {
     padding: 40px;
   }
   
-  /* Responsive layout for tablets and mobile */
-  @media (max-width: 768px) {
-    .project-intro {
-      flex-direction: column;
-      padding: 5px 16px;
-    }
-  
-    .project-intro__column {
-      flex: 1 1 100%;
-    }
-  
-    .project-intro__text p {
-      font-size: 1rem;
-      text-align: left;
-      padding: 5px 10px;
-    }
+ /* Responsive layout for tablets and mobile */
+@media(min-width:768px) and (max-width:1024px) {
+  .project-intro__text p {
+    font-size: 16px;
+    color: #333;
+    line-height: 24px;
+    padding: 0px;
   }
+
+  .project-intro {
+    padding: 5px 20px;
+  }
+}
+
+@media(min-width:768px) and (max-width:1024px) {
+  .project-intro__text p {
+    font-size: 16px;
+    color: #333;
+    line-height: 24px;
+    padding: 0px;
+  }
+
+  .project-intro {
+    padding: 5px 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .project-intro {
+    flex-direction: column;
+    padding: 0rem 1rem;
+  }
+
+  .project-intro__column {
+    flex: 1 1 100%;
+  }
+
+  .project-intro__text p {
+    font-size: 1rem;
+    text-align: left;
+    padding: 0px 10px;
+  }
+}
 
 
   /* Project Videos */
@@ -991,6 +1044,13 @@ body {
 }
 
 /* Responsive Design */
+@media(min-width:769px) and (max-width:1024px){
+  .social-icons {
+    display: flex;
+    gap: 0px;
+}
+}
+
 @media (max-width: 768px) {
     .columns-row {
         grid-template-columns: 1fr;

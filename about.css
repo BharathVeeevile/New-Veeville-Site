@@ -220,7 +220,6 @@ body {
   overflow: hidden;
   font-family: 'Manrope', sans-serif;
 }
-
 .design-carousel .dc-slide {
   position: absolute;
   top: 0;
@@ -233,6 +232,8 @@ body {
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
+
+
 
 .design-carousel .dc-slide.active {
   opacity: 1;
@@ -295,7 +296,20 @@ body {
   }
 }
 
+/* Ensure full image is visible on smaller screens */
+@media (max-width: 767px) {
+  .design-carousel .dc-slide {
+    background-size: contain;
+    background-position: top center;
+  }
+}
+
+
+
 @media (max-width: 600px) {
+  .design-carousel{
+    height: 58vh;
+  }
   .design-carousel .dc-text {
     bottom: 40px;
     left: 20px;
@@ -693,11 +707,15 @@ body {
 @media (max-width: 600px) {
   .people-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .section-title {
     font-size: 1.8rem;
     text-align: center;
+  }
+  .people-section{
+    padding: 10px 20px;
   }
 }
 
@@ -1006,6 +1024,17 @@ body {
     text-align: center;
   }
 
+  .vee-text h1 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 10px;
+  }
+
+  .vee-section{
+    padding: 10px 20px;
+  }
+
   .vee-text,
   .vee-image {
     flex: 1 1 100%;
@@ -1095,6 +1124,12 @@ body {
   .section-title {
     font-size: 2rem;
     margin-bottom: 40px;
+  }
+
+  .what-we-do {
+    padding: 10px 20px;
+    background-color: #ffffff;
+    text-align: center;
   }
 
   .services-grid {
