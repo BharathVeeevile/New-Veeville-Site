@@ -211,15 +211,18 @@ body {
 
 /* Top Carousel */
 
-/* Top Carousel */
+  /* Top Carousel */
 
-.design-carousel {
+  .design-carousel {
     position: relative;
-    width: 100%;
-    height: 100vh;
+    width: 100vw;
+    height: 600px;
     overflow: hidden;
+    margin: 0;
+    padding: 0;
     font-family: 'Manrope', sans-serif;
   }
+  
   .design-carousel .dc-slide {
     position: absolute;
     top: 0;
@@ -233,100 +236,113 @@ body {
     transition: opacity 1s ease-in-out;
   }
   
-  
-  
-  .design-carousel .dc-slide.active {
-    opacity: 1;
-    z-index: 1;
+
+.design-carousel .dc-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.design-carousel .dc-text {
+  position: absolute;
+  bottom: 100px;
+  left: 80px;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.design-carousel .dc-text span {
+  display: block;
+  font-weight: normal;
+  font-size: 2.5rem;
+}
+
+.design-carousel .dc-dots {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+}
+
+.design-carousel .dc-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.4;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.design-carousel .dc-dot.active {
+  opacity: 1;
+}
+
+@media (min-width: 1024px) and (max-width:1300px){
+  .design-carousel{
+    height:60vh
   }
-  
+  .design-carousel .dc-slide{
+    background-size: cover;
+    background-position: center center;
+}
+}
+
+@media (max-width: 1023px) {
   .design-carousel .dc-text {
-    position: absolute;
-    bottom: 100px;
-    left: 80px;
-    color: white;
-    font-size: 3rem;
-    font-weight: bold;
-    z-index: 2;
+    bottom: 60px;
+    left: 30px;
+    font-size: 2rem;
   }
-  
+
   .design-carousel .dc-text span {
-    display: block;
-    font-weight: normal;
-    font-size: 2.5rem;
+    font-size: 1.3rem;
   }
-  
-  .design-carousel .dc-dots {
-    position: absolute;
-    right: 40px;
-    bottom: 40px;
-    display: flex;
-    gap: 10px;
-    z-index: 2;
-  }
-  
+
   .design-carousel .dc-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #fff;
-    opacity: 0.4;
-    cursor: pointer;
-    transition: opacity 0.3s;
+    width: 10px;
+    height: 10px;
   }
-  
-  .design-carousel .dc-dot.active {
-    opacity: 1;
+  .design-carousel{
+    height: 50vh;
   }
-  
-  @media (max-width: 1024px) {
-    .design-carousel .dc-text {
-      bottom: 60px;
-      left: 30px;
-      font-size: 2rem;
-    }
-  
-    .design-carousel .dc-text span {
-      font-size: 1.3rem;
-    }
-  
-    .design-carousel .dc-dot {
-      width: 10px;
-      height: 10px;
-    }
+  .design-carousel .dc-slide{
+    background-size: contain;
+    background-position: top center;
+}
+}
+
+@media (max-width: 600px) {
+  .design-carousel{
+    height: 27vh;
   }
+
+  .design-carousel .dc-slide{
+    background-size: cover;
+    background-position: top center;
+}
+
   
-  /* Ensure full image is visible on smaller screens */
-  @media (max-width: 767px) {
-    .design-carousel .dc-slide {
-      background-size: contain;
-      background-position: top center;
-    }
+
+  .design-carousel .dc-text {
+    bottom: 40px;
+    left: 20px;
+    font-size: 1.5rem;
   }
-  
-  
-  
-  @media (max-width: 600px) {
-    .design-carousel{
-      height: 58vh;
-    }
-    .design-carousel .dc-text {
-      bottom: 40px;
-      left: 20px;
-      font-size: 1.5rem;
-    }
-  
-    .design-carousel .dc-text span {
-      font-size: 1.1rem;
-    }
-  
-    .design-carousel .dc-dot {
-      width: 8px;
-      height: 8px;
-    }
+
+  .design-carousel .dc-text span {
+    font-size: 1.1rem;
   }
-  
-  
+
+  .design-carousel .dc-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
   
 
 /* 2 location */
@@ -554,7 +570,7 @@ body {
 
 
 .footer-section {
-    max-width: 1530px;
+    width: 100%;
     margin: 0 auto;
     padding: 40px 40px;
     font-family: 'Manrope', sans-serif;

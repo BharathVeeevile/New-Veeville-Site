@@ -220,26 +220,29 @@ body {
 
   /* Top Carousel */
 
-.design-carousel {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  font-family: 'Manrope', sans-serif;
-}
-
-.design-carousel .dc-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
+  .design-carousel {
+    position: relative;
+    width: 100vw;
+    height: 600px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: 'Manrope', sans-serif;
+  }
+  
+  .design-carousel .dc-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
 
 .design-carousel .dc-slide.active {
   opacity: 1;
@@ -285,7 +288,17 @@ body {
   opacity: 1;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1024px) and (max-width:1300px){
+  .design-carousel{
+    height:60vh
+  }
+  .design-carousel .dc-slide{
+    background-size: cover;
+    background-position: center center;
+}
+}
+
+@media (max-width: 1023px) {
   .design-carousel .dc-text {
     bottom: 60px;
     left: 30px;
@@ -300,9 +313,26 @@ body {
     width: 10px;
     height: 10px;
   }
+  .design-carousel{
+    height: 50vh;
+  }
+  .design-carousel .dc-slide{
+    background-size: contain;
+    background-position: top center;
+}
 }
 
 @media (max-width: 600px) {
+  .design-carousel{
+    height: 27vh;
+  }
+
+
+  
+  .design-carousel .dc-slide{
+      background-size: contain;
+      background-position: top center;
+  }
   .design-carousel .dc-text {
     bottom: 40px;
     left: 20px;
@@ -629,7 +659,7 @@ body {
   
   
   .footer-section {
-    max-width: 1530px;
+    width: 100%;
     margin: 0 auto;
     padding: 40px 40px;
     font-family: 'Manrope', sans-serif;
@@ -941,6 +971,7 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 10px;
     transition: transform 0.3s ease;
   }
   
@@ -1045,6 +1076,7 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 10px;
     transition: transform 0.3s ease;
   }
   
@@ -1150,6 +1182,7 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 10px;
     transition: transform 0.3s ease;
   }
   
@@ -1254,6 +1287,7 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 10px;
     transition: transform 0.3s ease;
   }
   
@@ -1359,6 +1393,7 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 10px;
     transition: transform 0.3s ease;
   }
   
