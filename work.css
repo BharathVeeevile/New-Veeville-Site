@@ -456,7 +456,8 @@ body {
   .vision-block,
   .identity-block,
   .essence-block,
-  .canvas-block {
+  .canvas-block,
+  .Product-block {
     display: none;
   }
   
@@ -1338,6 +1339,110 @@ body {
   
     .identity-title h2,
     .identity-paragraph p {
+      text-align: center;
+    }
+  }
+
+  /*product block*/
+  .product-block {
+    width: 100%;
+    max-width: 1450px;
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .product-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+  }
+
+  .product-intro {
+    margin-bottom: 40px;
+  }
+
+  .product-col {
+    flex: 1;
+    padding: 5px;
+    position: relative;
+  }
+
+  /* Text content styles */
+  .product-title h2 {
+    font-size: 2rem;
+    margin: 0;
+    color: #000;
+  }
+
+  .product-paragraph p {
+    font-size: 24px;
+    margin: 0;
+    color: #000;
+  }
+
+  /* Image block styling */
+  .product-image-box {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+
+  /* Hover overlay */
+  .product-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .product-overlay h3 {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+
+  .product-overlay p {
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+
+  .product-image-box:hover img {
+    transform: scale(1.1);
+  }
+
+  .product-image-box:hover .product-overlay {
+    opacity: 1;
+  }
+
+  /* Responsive design */
+  @media (max-width: 767px) {
+    .product-row {
+      flex-direction: column;
+    }
+
+    .product-col {
+      width: 100%;
+      padding: 5px 0;
+    }
+
+    .product-title h2,
+    .product-paragraph p {
       text-align: center;
     }
   }
