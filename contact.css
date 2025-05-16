@@ -209,6 +209,59 @@ body {
     }
 }
 
+
+/* Banner section */
+
+
+
+/* Banner section */
+.stamina-banner {
+  width: 100%;
+  height: 600px; /* Standard height on laptop/desktop */
+  overflow: hidden;
+  position: relative;
+}
+
+.stamina-banner__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* IMPORTANT: always cover */
+  object-position: center center; /* Center the important part */
+}
+
+/* Tablet view */
+@media (max-width: 1024px) {
+  .stamina-banner {
+    height: 500px; /* Standard reduced height on tablets */
+  }
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .stamina-banner__image {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* IMPORTANT: always cover */
+    object-position: center center; /* Center the important part */
+  }
+  .stamina-banner {
+    height: 400px; /* Standard reduced height on mobile */
+  }
+}
+
+/* Small phone view */
+@media (max-width: 480px) {
+  .stamina-banner__image {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* IMPORTANT: always cover */
+    object-position: center center; /* Center the important part */
+  }
+  .stamina-banner {
+    height: 200px; /* Even slightly smaller for small phones */
+  }
+}
+
 /* Top Carousel */
 
   /* Top Carousel */
